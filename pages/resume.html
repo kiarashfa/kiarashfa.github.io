@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kiarash Farajzadehahary - Resume and CV">
+    <meta name="author" content="Kiarash Farajzadehahary">
+    <title>Resume & CV | Kiarash Farajzadehahary</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="../assets/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicons/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/favicons/site.webmanifest">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    
+    <style>
+        /* PDF Viewer Specific Styles */
+        .pdf-viewer-container {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            min-height: 100vh;
+            padding-top: 120px;
+        }
+        
+        .pdf-controls {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            pointer-events: auto;
+        }
+        
+        .pdf-tabs {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .pdf-tab {
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .pdf-tab:hover {
+            background: rgba(73, 197, 182, 0.15);
+            border-color: rgba(73, 197, 182, 0.5);
+            color: #49c5b6;
+        }
+        
+        .pdf-tab.active {
+            background: rgba(73, 197, 182, 0.2);
+            border-color: #49c5b6;
+            color: #49c5b6;
+        }
+        
+        .pdf-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .pdf-button {
+            padding: 0.8rem 1.5rem;
+            background: rgba(73, 197, 182, 0.15);
+            border: 1px solid rgba(73, 197, 182, 0.3);
+            border-radius: 10px;
+            color: #fff;
+            cursor: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .pdf-button:hover {
+            background: rgba(73, 197, 182, 0.3);
+            border-color: #49c5b6;
+            transform: translateY(-2px);
+        }
+        
+        .pdf-button i {
+            font-size: 1rem;
+        }
+        
+        .pdf-navigation {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .nav-button {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            cursor: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-button:hover:not(:disabled) {
+            background: rgba(73, 197, 182, 0.2);
+            border-color: #49c5b6;
+        }
+        
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .page-info {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .zoom-controls {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .zoom-button {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            cursor: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .zoom-button:hover {
+            background: rgba(255, 147, 152, 0.2);
+            border-color: #FF9398;
+        }
+        
+        .zoom-level {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85rem;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .pdf-canvas-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 800px;
+            overflow: auto;
+            pointer-events: auto;
+        }
+        
+        #pdf-canvas {
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .loading-message {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 4rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .pdf-viewer-container {
+                padding: 1rem;
+                padding-top: 100px;
+            }
+            
+            .pdf-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .pdf-tabs {
+                flex-direction: column;
+            }
+            
+            .pdf-tab {
+                text-align: center;
+            }
+            
+            .pdf-actions {
+                justify-content: center;
+            }
+            
+            .pdf-navigation {
+                justify-content: center;
+            }
+            
+            .zoom-controls {
+                justify-content: center;
+            }
+            
+            .pdf-canvas-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <a href="../index.html" class="nav-logo">KF</a>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-links" id="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="works.html">Works</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+            <li class="dropdown">
+                <button class="dropdown-toggle">
+                    More <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="resume.html" class="active">Resume</a>
+                    <a href="resources.html">Resources</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- 3D Canvas Background -->
+    <div id="canvas-container"></div>
+    
+
+    <!-- PDF Viewer Container -->
+    <div class="pdf-viewer-container">
+        <!-- Controls -->
+        <div class="pdf-controls">
+            <!-- Document Tabs -->
+            <div class="pdf-tabs">
+                <button class="pdf-tab active" data-doc="resume">
+                    <i class="fas fa-file-alt"></i> Resume
+                </button>
+                <button class="pdf-tab" data-doc="cv">
+                    <i class="fas fa-file-pdf"></i> Full CV
+                </button>
+            </div>
+            
+            <!-- Actions -->
+            <div class="pdf-actions">
+                <button class="pdf-button" id="download-btn">
+                    <i class="fas fa-download"></i> Download
+                </button>
+                <button class="pdf-button" id="print-btn">
+                    <i class="fas fa-print"></i> Print
+                </button>
+            </div>
+        </div>
+        
+        <!-- Navigation & Zoom Controls -->
+        <div class="pdf-controls">
+            <!-- Page Navigation -->
+            <div class="pdf-navigation">
+                <button class="nav-button" id="prev-page">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="page-info">
+                    Page <span id="page-num">1</span> / <span id="page-count">1</span>
+                </div>
+                <button class="nav-button" id="next-page">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Zoom Controls -->
+            <div class="zoom-controls">
+                <button class="zoom-button" id="zoom-out">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <div class="zoom-level">
+                    <span id="zoom-level">100</span>%
+                </div>
+                <button class="zoom-button" id="zoom-in">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="pdf-button" id="fit-width">
+                    <i class="fas fa-arrows-left-right"></i> Fit Width
+                </button>
+            </div>
+        </div>
+        
+        <!-- PDF Canvas -->
+        <div class="pdf-canvas-container" id="canvas-container-pdf">
+            <canvas id="pdf-canvas"></canvas>
+        </div>
+    </div>
+
+    <!-- Three.js Import Map -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+        }
+    }
+    </script>
+
+    <!-- Three.js Background -->
+    <script type="module">
+        import { initThreeJS } from '../js/three-background.js';
+        initThreeJS();
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="../js/main.js"></script>
+    
+    <!-- PDF Viewer Script -->
+    <script>
+        // PDF.js worker configuration
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        
+        // State
+        let pdfDoc = null;
+        let pageNum = 1;
+        let pageRendering = false;
+        let pageNumPending = null;
+        let scale = 1.5;
+        let currentDoc = 'resume';
+        let ctx = null;
+        
+        // Document paths - handles both local and GitHub Pages
+        // Automatically detects if running on GitHub Pages
+        const isGitHubPages = window.location.hostname.includes('github.io');
+        const basePath = isGitHubPages ? window.location.pathname.split('/pages/')[0] : '..';
+        
+        const docs = {
+            resume: `${basePath}/assets/docs/Kiarashfa_Resume.pdf`,
+            cv: `${basePath}/assets/docs/Kiarashfa_CV.pdf`
+        };
+        
+        // Debug: Log the paths being used
+        console.log('PDF Viewer initialized');
+        console.log('Base path:', basePath);
+        console.log('Resume path:', docs.resume);
+        console.log('CV path:', docs.cv);
+        
+        /**
+         * Render the page
+         */
+        function renderPage(num) {
+            pageRendering = true;
+            
+            pdfDoc.getPage(num).then(function(page) {
+                const canvas = document.getElementById('pdf-canvas');
+                if (!canvas) {
+                    console.error('Canvas not found');
+                    return;
+                }
+                
+                if (!ctx) {
+                    ctx = canvas.getContext('2d');
+                }
+                
+                const viewport = page.getViewport({ scale: scale });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                
+                const renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport
+                };
+                
+                const renderTask = page.render(renderContext);
+                
+                renderTask.promise.then(function() {
+                    pageRendering = false;
+                    if (pageNumPending !== null) {
+                        renderPage(pageNumPending);
+                        pageNumPending = null;
+                    }
+                });
+            }).catch(function(error) {
+                console.error('Error rendering page:', error);
+                pageRendering = false;
+            });
+            
+            // Update page counters
+            document.getElementById('page-num').textContent = num;
+        }
+        
+        /**
+         * Queue page rendering
+         */
+        function queueRenderPage(num) {
+            if (pageRendering) {
+                pageNumPending = num;
+            } else {
+                renderPage(num);
+            }
+        }
+        
+        /**
+         * Load PDF document
+         */
+        function loadDocument(docType) {
+            currentDoc = docType;
+            
+            // Show loading message
+            const container = document.getElementById('canvas-container-pdf');
+            container.innerHTML = '<div class="loading-message"><i class="fas fa-spinner fa-spin"></i> Loading PDF...</div>';
+            
+            // Reset context
+            ctx = null;
+            
+            // Create loading task with CORS configuration
+            const loadingTask = pdfjsLib.getDocument({
+                url: docs[docType],
+                cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+                cMapPacked: true,
+            });
+            
+            loadingTask.promise.then(function(pdf) {
+                pdfDoc = pdf;
+                document.getElementById('page-count').textContent = pdf.numPages;
+                
+                // Restore canvas
+                container.innerHTML = '<canvas id="pdf-canvas"></canvas>';
+                
+                // Reset context
+                ctx = null;
+                
+                // Initial render
+                pageNum = 1;
+                renderPage(pageNum);
+                updateButtons();
+            }).catch(function(error) {
+                let errorMessage = 'Error loading PDF.';
+                
+                // Provide more specific error messages
+                if (error.message && error.message.includes('404')) {
+                    errorMessage = 'PDF file not found. Please check the file path.';
+                } else if (error.message && error.message.includes('CORS')) {
+                    errorMessage = 'CORS error. PDF cannot be loaded from this location.';
+                } else if (error.message) {
+                    errorMessage = `Error: ${error.message}`;
+                }
+                
+                container.innerHTML = `<div class="loading-message"><i class="fas fa-exclamation-triangle"></i> ${errorMessage}<br><small>Check browser console for details.</small></div>`;
+                console.error('Error loading PDF:', error);
+                console.error('Attempted to load:', docs[docType]);
+            });
+        }
+        
+        /**
+         * Update button states
+         */
+        function updateButtons() {
+            document.getElementById('prev-page').disabled = pageNum <= 1;
+            document.getElementById('next-page').disabled = pageNum >= pdfDoc.numPages;
+        }
+        
+        /**
+         * Previous page
+         */
+        function onPrevPage() {
+            if (pageNum <= 1) return;
+            pageNum--;
+            queueRenderPage(pageNum);
+            updateButtons();
+        }
+        
+        /**
+         * Next page
+         */
+        function onNextPage() {
+            if (pageNum >= pdfDoc.numPages) return;
+            pageNum++;
+            queueRenderPage(pageNum);
+            updateButtons();
+        }
+        
+        /**
+         * Zoom in
+         */
+        function onZoomIn() {
+            if (scale >= 3) return;
+            scale += 0.25;
+            document.getElementById('zoom-level').textContent = Math.round(scale * 100);
+            queueRenderPage(pageNum);
+        }
+        
+        /**
+         * Zoom out
+         */
+        function onZoomOut() {
+            if (scale <= 0.5) return;
+            scale -= 0.25;
+            document.getElementById('zoom-level').textContent = Math.round(scale * 100);
+            queueRenderPage(pageNum);
+        }
+        
+        /**
+         * Fit to width
+         */
+        function onFitWidth() {
+            const container = document.getElementById('canvas-container-pdf');
+            const containerWidth = container.clientWidth - 80; // Account for padding
+            
+            pdfDoc.getPage(pageNum).then(function(page) {
+                const viewport = page.getViewport({ scale: 1 });
+                scale = containerWidth / viewport.width;
+                document.getElementById('zoom-level').textContent = Math.round(scale * 100);
+                queueRenderPage(pageNum);
+            });
+        }
+        
+        /**
+         * Download current document
+         */
+        function onDownload() {
+            const link = document.createElement('a');
+            link.href = docs[currentDoc];
+            link.download = currentDoc === 'resume' ? 'Kiarashfa_Resume.pdf' : 'Kiarashfa_CV.pdf';
+            link.click();
+        }
+        
+        /**
+         * Print current document
+         */
+        function onPrint() {
+            window.open(docs[currentDoc], '_blank');
+        }
+        
+        // Event Listeners
+        document.getElementById('prev-page').addEventListener('click', onPrevPage);
+        document.getElementById('next-page').addEventListener('click', onNextPage);
+        document.getElementById('zoom-in').addEventListener('click', onZoomIn);
+        document.getElementById('zoom-out').addEventListener('click', onZoomOut);
+        document.getElementById('fit-width').addEventListener('click', onFitWidth);
+        document.getElementById('download-btn').addEventListener('click', onDownload);
+        document.getElementById('print-btn').addEventListener('click', onPrint);
+        
+        // Tab switching
+        document.querySelectorAll('.pdf-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.pdf-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                loadDocument(this.dataset.doc);
+            });
+        });
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') onPrevPage();
+            if (e.key === 'ArrowRight') onNextPage();
+            if (e.key === '+' || e.key === '=') onZoomIn();
+            if (e.key === '-') onZoomOut();
+        });
+        
+        // Initial load
+        loadDocument('resume');
+    </script>
+</body>
+</html>

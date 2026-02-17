@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kiarash Farajzadehahary - Educational Resources and Tools">
+    <meta name="author" content="Kiarash Farajzadehahary">
+    <title>Resources | Kiarash Farajzadehahary</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="../assets/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicons/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/favicons/site.webmanifest">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* Resources Page Specific Styles */
+        .resources-container {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            min-height: 100vh;
+            padding-top: 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .resources-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .resources-title {
+            font-size: 3rem;
+            font-weight: 100;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #49c5b6, #FF9398);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .resources-subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.7;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Section Styling */
+        .resource-section {
+            margin-bottom: 5rem;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #49c5b6, #FF9398);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #fff;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 200;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #fff;
+        }
+        
+        /* Resource Cards Grid */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .resource-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            pointer-events: auto;
+            cursor: none;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .resource-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(73, 197, 182, 0.5);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(73, 197, 182, 0.3);
+        }
+        
+        .resource-card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(73, 197, 182, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #49c5b6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .resource-card h3 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #49c5b6, #FF9398);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .resource-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .resource-card-footer {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .resource-btn {
+            padding: 0.8rem 1.5rem;
+            background: rgba(73, 197, 182, 0.2);
+            border: 1px solid rgba(73, 197, 182, 0.4);
+            border-radius: 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: none;
+        }
+        
+        .resource-btn:hover {
+            background: rgba(73, 197, 182, 0.4);
+            border-color: #49c5b6;
+            transform: translateY(-2px);
+        }
+        
+        .resource-btn.secondary {
+            background: rgba(255, 147, 152, 0.2);
+            border-color: rgba(255, 147, 152, 0.4);
+        }
+        
+        .resource-btn.secondary:hover {
+            background: rgba(255, 147, 152, 0.4);
+            border-color: #FF9398;
+        }
+        
+        /* Video Container */
+        .video-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            background: #000;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-info {
+            margin-top: 1.5rem;
+        }
+        
+        .video-info h3 {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            color: #49c5b6;
+        }
+        
+        .video-info p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        /* Interactive Tool Showcase */
+        .tool-showcase {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        
+        .tool-showcase:hover {
+            border-color: rgba(73, 197, 182, 0.5);
+            box-shadow: 0 20px 60px rgba(73, 197, 182, 0.2);
+        }
+        
+        .tool-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #49c5b6, #FF9398);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #fff;
+        }
+        
+        .tool-showcase h3 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #49c5b6, #FF9398);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tool-showcase p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.85;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .tool-features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .tool-feature {
+            text-align: center;
+            cursor: none;
+            pointer-events: auto;
+            transition: all 0.3s ease;
+            padding: 0.8rem;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .tool-feature:hover {
+            transform: translateY(-4px);
+        }
+        
+        .tool-feature:hover .tool-feature-icon {
+            background: rgba(73, 197, 182, 0.4);
+            border-color: #49c5b6;
+            box-shadow: 0 8px 25px rgba(73, 197, 182, 0.3);
+        }
+        
+        .tool-feature.active .tool-feature-icon {
+            background: rgba(73, 197, 182, 0.5);
+            border-color: #49c5b6;
+            box-shadow: 0 8px 30px rgba(73, 197, 182, 0.4);
+        }
+        
+        .tool-feature.active p {
+            opacity: 1;
+            color: #49c5b6;
+        }
+        
+        .tool-feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(73, 197, 182, 0.2);
+            border: 1px solid rgba(73, 197, 182, 0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #49c5b6;
+            margin: 0 auto 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-feature p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 3rem;
+            background: rgba(73, 197, 182, 0.3);
+            border: 2px solid #49c5b6;
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            cursor: none;
+            margin-top: 1rem;
+        }
+        
+        .tool-cta:hover {
+            background: rgba(73, 197, 182, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(73, 197, 182, 0.4);
+        }
+        
+        /* ===== Prediction Panel ===== */
+        .predict-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.4s ease,
+                        margin 0.4s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+        
+        .predict-panel.open {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 2rem;
+        }
+        
+        .predict-panel-inner {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(73, 197, 182, 0.25);
+            border-radius: 16px;
+            padding: 2rem 2.5rem;
+            text-align: center;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .predict-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .predict-panel-header i {
+            font-size: 1.2rem;
+            color: #49c5b6;
+        }
+        
+        .predict-panel-header h4 {
+            font-size: 1.15rem;
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            color: #fff;
+            margin: 0;
+        }
+        
+        .predict-input-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        
+        .predict-input-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 0.5rem;
+        }
+        
+        .predict-input {
+            width: 100%;
+            padding: 0.85rem 1.2rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.03em;
+            outline: none;
+            transition: all 0.3s ease;
+            cursor: none;
+            box-sizing: border-box;
+        }
+        
+        .predict-input::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+            font-family: inherit;
+        }
+        
+        .predict-input:focus {
+            border-color: rgba(73, 197, 182, 0.5);
+            background: rgba(255, 255, 255, 0.09);
+            box-shadow: 0 0 20px rgba(73, 197, 182, 0.1);
+        }
+        
+        .predict-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .predict-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.85rem 2.2rem;
+            background: rgba(73, 197, 182, 0.25);
+            border: 1px solid rgba(73, 197, 182, 0.5);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            transition: all 0.3s ease;
+            cursor: none;
+            pointer-events: auto;
+            margin-top: 0.5rem;
+        }
+        
+        .predict-btn:hover {
+            background: rgba(73, 197, 182, 0.4);
+            border-color: #49c5b6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(73, 197, 182, 0.3);
+        }
+        
+        .predict-btn:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .predict-btn .spinner {
+            display: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        
+        .predict-btn.loading .spinner {
+            display: block;
+        }
+        
+        .predict-btn.loading .btn-text {
+            display: none;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Result display */
+        .predict-result {
+            margin-top: 1.2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .predict-result.show {
+            max-height: 200px;
+            opacity: 1;
+        }
+        
+        .predict-result-inner {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .result-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.3rem;
+            background: rgba(73, 197, 182, 0.12);
+            border: 1px solid rgba(73, 197, 182, 0.3);
+            border-radius: 10px;
+            animation: chipIn 0.4s ease-out;
+        }
+        
+        @keyframes chipIn {
+            from { opacity: 0; transform: scale(0.9) translateY(8px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        .result-chip .result-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .result-chip .result-value {
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: #49c5b6;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* Error display */
+        .predict-error {
+            margin-top: 1rem;
+            padding: 0.8rem 1.2rem;
+            background: rgba(255, 100, 100, 0.1);
+            border: 1px solid rgba(255, 100, 100, 0.3);
+            border-radius: 10px;
+            color: #FF9398;
+            font-size: 0.9rem;
+            display: none;
+            animation: chipIn 0.3s ease-out;
+        }
+        
+        .predict-error.show {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Click hint on icons */
+        .tool-feature-hint {
+            font-size: 0.7rem;
+            opacity: 0;
+            color: #49c5b6;
+            letter-spacing: 0.08em;
+            transition: opacity 0.3s ease;
+            margin-top: 0.4rem;
+        }
+        
+        .tool-feature:hover .tool-feature-hint {
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 768px) {
+            .predict-row {
+                grid-template-columns: 1fr;
+            }
+            .predict-panel-inner {
+                padding: 1.5rem;
+            }
+            .tool-features {
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Download List */
+        .download-list {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .download-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .download-item:hover {
+            background: rgba(73, 197, 182, 0.1);
+            border-color: rgba(73, 197, 182, 0.3);
+            transform: translateX(10px);
+        }
+        
+        .download-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .download-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .download-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 147, 152, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #FF9398;
+        }
+        
+        .download-details h4 {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 0.3rem;
+            color: #fff;
+        }
+        
+        .download-details p {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin: 0;
+        }
+        
+        .download-btn {
+            padding: 0.7rem 1.5rem;
+            background: rgba(73, 197, 182, 0.2);
+            border: 1px solid rgba(73, 197, 182, 0.4);
+            border-radius: 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: none;
+            white-space: nowrap;
+        }
+        
+        .download-btn:hover {
+            background: rgba(73, 197, 182, 0.4);
+            border-color: #49c5b6;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .resource-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .resources-container {
+                padding: 1rem;
+                padding-top: 100px;
+            }
+            
+            .resources-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .resource-card {
+                padding: 2rem;
+            }
+            
+            .tool-showcase {
+                padding: 2rem;
+            }
+            
+            .tool-features {
+                gap: 2rem;
+            }
+            
+            .download-item {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .download-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .video-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <a href="../index.html" class="nav-logo">KF</a>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobile-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-links" id="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="works.html">Works</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+            <li class="dropdown">
+                <button class="dropdown-toggle">
+                    More <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="resume.html">Resume</a>
+                    <a href="resources.html" class="active">Resources</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- 3D Canvas Background -->
+    <div id="canvas-container"></div>
+
+    <!-- Resources Container -->
+    <div class="resources-container">
+        <!-- Header -->
+        <div class="resources-header">
+            <h1 class="resources-title">Resources</h1>
+            <p class="resources-subtitle">Educational materials, tools, and learning content</p>
+        </div>
+        
+        <!-- Interactive Tools Section -->
+        <section class="resource-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h2 class="section-title">Interactive Tools</h2>
+            </div>
+            
+            <div class="tool-showcase">
+                <div class="tool-logo">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <h3>Properties Predictor</h3>
+                <p>
+                    Predict properties instantly right here in this panel!<br>
+                    Our machine learning models let you estimate key properties from molecular structure alone.<br>
+                    Click any property below, enter a SMILES string, and get your prediction in seconds.<br>
+                    For detailed guides on SMILES notation, models, and more, visit the PolymatAI website.
+                </p>
+                
+                <div class="tool-features">
+                    <div class="tool-feature" data-model="rr" onclick="openPredict('rr')">
+                        <div class="tool-feature-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <p>Reactivity Ratios</p>
+                        <div class="tool-feature-hint">Click to predict</div>
+                    </div>
+                    <div class="tool-feature" data-model="kp" onclick="openPredict('kp')">
+                        <div class="tool-feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <p>Propagation Rate</p>
+                        <div class="tool-feature-hint">Click to predict</div>
+                    </div>
+                    <div class="tool-feature" data-model="tg" onclick="openPredict('tg')">
+                        <div class="tool-feature-icon">
+                            <i class="fas fa-temperature-high"></i>
+                        </div>
+                        <p>Glass Transition Temp</p>
+                        <div class="tool-feature-hint">Click to predict</div>
+                    </div>
+                    <div class="tool-feature" data-model="ws" onclick="openPredict('ws')">
+                        <div class="tool-feature-icon">
+                            <i class="fas fa-droplet"></i>
+                        </div>
+                        <p>Water Solubility</p>
+                        <div class="tool-feature-hint">Click to predict</div>
+                    </div>
+                </div>
+
+                <!-- Prediction Panel -->
+                <div class="predict-panel" id="predict-panel">
+
+                    <!-- RR Panel -->
+                    <div class="predict-panel-inner" id="panel-rr" style="display:none;">
+                        <div class="predict-panel-header">
+                            <i class="fas fa-balance-scale"></i>
+                            <h4>Reactivity Ratios Prediction</h4>
+                        </div>
+                        <div class="predict-input-group">
+                            <label>Monomer 1 SMILES</label>
+                            <input class="predict-input" id="rr-smiles1" type="text" 
+                                placeholder="e.g. C=CC(=O)OC">
+                        </div>
+                        <div class="predict-input-group">
+                            <label>Monomer 2 SMILES</label>
+                            <input class="predict-input" id="rr-smiles2" type="text" 
+                                placeholder="e.g. C=Cc1ccccc1">
+                        </div>
+                        <button class="predict-btn" onclick="runPredict('rr')">
+                            <span class="spinner"></span>
+                            <span class="btn-text"><i class="fas fa-play"></i> Predict</span>
+                        </button>
+                        <div class="predict-error" id="error-rr"><i class="fas fa-exclamation-circle"></i> <span></span></div>
+                        <div class="predict-result" id="result-rr">
+                            <div class="predict-result-inner">
+                                <div class="result-chip">
+                                    <span class="result-label">r₁</span>
+                                    <span class="result-value" id="val-r1">—</span>
+                                </div>
+                                <div class="result-chip">
+                                    <span class="result-label">r₂</span>
+                                    <span class="result-value" id="val-r2">—</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kp Panel -->
+                    <div class="predict-panel-inner" id="panel-kp" style="display:none;">
+                        <div class="predict-panel-header">
+                            <i class="fas fa-bolt"></i>
+                            <h4>Propagation Rate Constant Prediction</h4>
+                        </div>
+                        <div class="predict-input-group">
+                            <label>Monomer SMILES</label>
+                            <input class="predict-input" id="kp-smiles" type="text" 
+                                placeholder="e.g. C=CC(=O)OC">
+                        </div>
+                        <button class="predict-btn" onclick="runPredict('kp')">
+                            <span class="spinner"></span>
+                            <span class="btn-text"><i class="fas fa-play"></i> Predict</span>
+                        </button>
+                        <div class="predict-error" id="error-kp"><i class="fas fa-exclamation-circle"></i> <span></span></div>
+                        <div class="predict-result" id="result-kp">
+                            <div class="predict-result-inner">
+                                <div class="result-chip">
+                                    <span class="result-label">Kp</span>
+                                    <span class="result-value" id="val-kp">—</span>
+                                </div>
+                                <div class="result-chip">
+                                    <span class="result-label">Log₁₀(Kp)</span>
+                                    <span class="result-value" id="val-log-kp">—</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tg Panel -->
+                    <div class="predict-panel-inner" id="panel-tg" style="display:none;">
+                        <div class="predict-panel-header">
+                            <i class="fas fa-temperature-high"></i>
+                            <h4>Glass Transition Temperature Prediction</h4>
+                        </div>
+                        <div class="predict-input-group">
+                            <label>Polymer Repeating Unit SMILES</label>
+                            <input class="predict-input" id="tg-smiles" type="text" 
+                                placeholder="e.g. *CC(*)(C)C(=O)OC">
+                        </div>
+                        <button class="predict-btn" onclick="runPredict('tg')">
+                            <span class="spinner"></span>
+                            <span class="btn-text"><i class="fas fa-play"></i> Predict</span>
+                        </button>
+                        <div class="predict-error" id="error-tg"><i class="fas fa-exclamation-circle"></i> <span></span></div>
+                        <div class="predict-result" id="result-tg">
+                            <div class="predict-result-inner">
+                                <div class="result-chip">
+                                    <span class="result-label">Tg</span>
+                                    <span class="result-value" id="val-tg">—</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ws Panel -->
+                    <div class="predict-panel-inner" id="panel-ws" style="display:none;">
+                        <div class="predict-panel-header">
+                            <i class="fas fa-droplet"></i>
+                            <h4>Water Solubility Prediction</h4>
+                        </div>
+                        <div class="predict-input-group">
+                            <label>Monomer SMILES</label>
+                            <input class="predict-input" id="ws-smiles" type="text" 
+                                placeholder="e.g. C=CC(=O)OC">
+                        </div>
+                        <button class="predict-btn" onclick="runPredict('ws')">
+                            <span class="spinner"></span>
+                            <span class="btn-text"><i class="fas fa-play"></i> Predict</span>
+                        </button>
+                        <div class="predict-error" id="error-ws"><i class="fas fa-exclamation-circle"></i> <span></span></div>
+                        <div class="predict-result" id="result-ws">
+                            <div class="predict-result-inner">
+                                <div class="result-chip">
+                                    <span class="result-label">Ws</span>
+                                    <span class="result-value" id="val-ws">—</span>
+                                </div>
+                                <div class="result-chip">
+                                    <span class="result-label">Log₁₀(Ws)</span>
+                                    <span class="result-value" id="val-log-ws">—</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <a href="https://polymatai.pythonanywhere.com/" target="_blank" class="tool-cta">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>Launch Full PolymatAI</span>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Courses & Tutorials Section -->
+        <section class="resource-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h2 class="section-title">Courses & Tutorials</h2>
+            </div>
+            
+            <!-- Moldflow Course Video -->
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <video controls preload="metadata" poster="../assets/resources/Moldflow_Teaser_Thumb.jpg"
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:15px;">
+                        <source src="../assets/resources/Moldflow_Teaser_Video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3>Introduction to Moldflow Simulation</h3>
+                    <p>
+                        A comprehensive course on Autodesk Moldflow for plastic injection molding simulation, 
+                        covering 22 sessions across 5 chapters (~7.5 hours). Topics include software installation 
+                        and interface overview, injection molding process fundamentals, part design using Inventor, 
+                        SolidWorks, Siemens NX, and CATIA, pre-processing setup including meshing, material 
+                        selection, gate location, and process settings, as well as fill &amp; pack analysis, runner 
+                        and cooling system design, warpage &amp; shrinkage analysis, and multi-cavity systems. 
+                        This course is taught in Persian (Farsi).
+                    </p>
+                    <a href="https://maktabkhooneh.org/course/%D9%86%D8%B1%D9%85-%D8%A7%D9%81%D8%B2%D8%A7%D8%B1-%D9%85%D9%88%D9%84%D8%AF%D9%81%D9%84%D9%88-mk579/"
+                        target="_blank" class="resource-btn" style="margin-top: 1rem; display: inline-flex;">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Visit Full Course Website</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Additional Course Cards -->
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Machine Learning for Polymers</h3>
+                    <p>
+                        Learn how to apply machine learning techniques to polymer science problems. 
+                        Covers data preprocessing, model selection, training, and validation with 
+                        practical examples from emulsion polymerization.
+                    </p>
+                    <div class="resource-card-footer">
+                        <a href="#" class="resource-btn">
+                            <i class="fas fa-play"></i> Coming Soon
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Python for Chemical Engineers</h3>
+                    <p>
+                        Introduction to Python programming with focus on chemical engineering applications. 
+                        Includes data analysis, visualization, numerical methods, and process simulation.
+                    </p>
+                    <div class="resource-card-footer">
+                        <a href="#" class="resource-btn">
+                            <i class="fas fa-play"></i> Coming Soon
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Learning Materials Section -->
+        <section class="resource-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h2 class="section-title">Learning Materials</h2>
+            </div>
+            
+            <div class="download-list" id="materials-list">
+                <!-- Materials will be loaded from JSON -->
+                <div class="download-item">
+                    <div class="download-info">
+                        <div class="download-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-details">
+                            <h4>Principles of Polymerization Engineering</h4>
+                            <p>Solved problems covering key polymerization concepts &bull; PDF &bull; 243 KB</p>
+                        </div>
+                    </div>
+                    <a href="../assets/resources/Materials_PPE_Examples.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i>
+                        <span>Download</span>
+                    </a>
+                </div>
+                
+                <div class="download-item">
+                    <div class="download-info">
+                        <div class="download-icon">
+                            <i class="fas fa-file-powerpoint"></i>
+                        </div>
+                        <div class="download-details">
+                            <h4>Writing Academic English</h4>
+                            <p>Summary Slides Based on Oshima & Hogue's Book &bull; PPTX &bull; 12.1 MB</p>
+                        </div>
+                    </div>
+                    <a href="../assets/resources/Materials_WAE.pptx" class="download-btn" download>
+                        <i class="fas fa-download"></i>
+                        <span>Download</span>
+                    </a>
+                </div>
+                
+                <div class="download-item">
+                    <div class="download-info">
+                        <div class="download-icon">
+                            <i class="fas fa-file-code"></i>
+                        </div>
+                        <div class="download-details">
+                            <h4>Reinforcement Learning Tutorial</h4>
+                            <p> Solving game examples with RL in  Jupyter notebooks &bull; RAR &bull; 1.1 MB</p>
+                        </div>
+                    </div>
+                    <a href="../assets/resources/Materials_RL.rar" class="download-btn" download>
+                        <i class="fas fa-download"></i>
+                        <span>Download</span>
+                    </a>
+                </div>
+                
+                <div class="download-item">
+                    <div class="download-info">
+                        <div class="download-icon">
+                            <i class="fas fa-file-excel"></i>
+                        </div>
+                        <div class="download-details">
+                            <h4>Reaction Kinetics Data Template</h4>
+                            <p>Excel template for data collection &bull; XLSX &bull; 1.8 MB</p>
+                        </div>
+                    </div>
+                    <a href="../assets/resources/example.xlsx" class="download-btn" download>
+                        <i class="fas fa-download"></i>
+                        <span>Download</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Code & Software Section -->
+        <section class="resource-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <h2 class="section-title">Code & Software</h2>
+            </div>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-card-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub Repositories</h3>
+                    <p>
+                        Open-source code from my research projects. Includes Python libraries, 
+                        machine learning models, data processing scripts, and visualization tools.
+                    </p>
+                    <div class="resource-card-footer">
+                        <a href="https://github.com/KiarashFa" target="_blank" class="resource-btn">
+                            <i class="fab fa-github"></i> View Repositories
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-card-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python Packages</h3>
+                    <p>
+                        Custom Python packages for polymer science and machine learning applications. 
+                        Documentation and examples included.
+                    </p>
+                    <div class="resource-card-footer">
+                        <a href="#" class="resource-btn">
+                            <i class="fas fa-play"></i> Coming Soon
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-card-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Datasets</h3>
+                    <p>
+                        Curated datasets from different polymerization experiments. Available for 
+                        research and educational purposes with proper attribution.
+                    </p>
+                    <div class="resource-card-footer">
+                        <a href="#" class="resource-btn">
+                            <i class="fas fa-play"></i> Coming Soon
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer" style="margin-top: 4rem;">
+            <p>© 2026 Kiarash Farajzadehahary. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.7;">
+                Resources are provided for educational purposes. Please cite appropriately.
+            </p>
+        </footer>
+    </div>
+
+    <!-- Three.js Import Map -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+        }
+    }
+    </script>
+
+    <!-- Three.js Background -->
+    <script type="module">
+        import { initThreeJS } from '../js/three-background.js';
+        initThreeJS();
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="../js/main.js"></script>
+    
+    <!-- Resources / PolymatAI Prediction Script -->
+    <script>
+        const API_BASE = 'https://polymatai.pythonanywhere.com/api';
+        let activeModel = null;
+
+        function openPredict(model) {
+            const panel = document.getElementById('predict-panel');
+            const allInners = panel.querySelectorAll('.predict-panel-inner');
+            const allFeatures = document.querySelectorAll('.tool-feature');
+
+            // If clicking the already-active tab, close the panel
+            if (activeModel === model) {
+                panel.classList.remove('open');
+                allFeatures.forEach(f => f.classList.remove('active'));
+                activeModel = null;
+                return;
+            }
+
+            // Hide all inner panels
+            allInners.forEach(p => p.style.display = 'none');
+
+            // Show the selected one
+            document.getElementById('panel-' + model).style.display = 'block';
+
+            // Update active states on icons
+            allFeatures.forEach(f => f.classList.remove('active'));
+            document.querySelector('.tool-feature[data-model="' + model + '"]').classList.add('active');
+
+            // Open the panel
+            panel.classList.add('open');
+            activeModel = model;
+
+            // Focus the first input after transition
+            setTimeout(() => {
+                const firstInput = document.querySelector('#panel-' + model + ' .predict-input');
+                if (firstInput) firstInput.focus();
+            }, 350);
+        }
+
+        async function runPredict(model) {
+            const btn = document.querySelector('#panel-' + model + ' .predict-btn');
+            const errorEl = document.getElementById('error-' + model);
+            const resultEl = document.getElementById('result-' + model);
+
+            // Clear previous
+            errorEl.classList.remove('show');
+            resultEl.classList.remove('show');
+
+            // Build request body
+            let body = {};
+            if (model === 'rr') {
+                const s1 = document.getElementById('rr-smiles1').value.trim();
+                const s2 = document.getElementById('rr-smiles2').value.trim();
+                if (!s1 || !s2) {
+                    showError(model, 'Please enter both SMILES strings.');
+                    return;
+                }
+                body = { smiles1: s1, smiles2: s2 };
+            } else {
+                const smiles = document.getElementById(model + '-smiles').value.trim();
+                if (!smiles) {
+                    showError(model, 'Please enter a SMILES string.');
+                    return;
+                }
+                body = { smiles: smiles };
+            }
+
+            // Loading state
+            btn.classList.add('loading');
+            btn.disabled = true;
+
+            try {
+                const res = await fetch(API_BASE + '/predict-' + model, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+
+                const data = await res.json();
+
+                if (!data.success) {
+                    showError(model, data.error || 'Prediction failed.');
+                    return;
+                }
+
+                // Populate results
+                if (model === 'rr') {
+                    document.getElementById('val-r1').textContent = data.r1.toFixed(3);
+                    document.getElementById('val-r2').textContent = data.r2.toFixed(3);
+                } else if (model === 'kp') {
+                    document.getElementById('val-kp').textContent = data.kp.toFixed(2) + ' L/mol/s';
+                    document.getElementById('val-log-kp').textContent = data.log_kp.toFixed(2);
+                } else if (model === 'tg') {
+                    document.getElementById('val-tg').textContent = data.tg.toFixed(2) + ' °C';
+                } else if (model === 'ws') {
+                    document.getElementById('val-ws').textContent = data.ws.toFixed(4) + ' g/L';
+                    document.getElementById('val-log-ws').textContent = data.log_ws.toFixed(2);
+                }
+
+                resultEl.classList.add('show');
+
+            } catch (err) {
+                showError(model, 'Could not connect to PolymatAI. Please try again or use the full website.');
+            } finally {
+                btn.classList.remove('loading');
+                btn.disabled = false;
+            }
+        }
+
+        function showError(model, msg) {
+            const errorEl = document.getElementById('error-' + model);
+            errorEl.querySelector('span').textContent = msg;
+            errorEl.classList.add('show');
+        }
+
+        // Allow Enter key to trigger prediction
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && activeModel) {
+                const panel = document.getElementById('panel-' + activeModel);
+                if (panel && panel.contains(document.activeElement)) {
+                    runPredict(activeModel);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
