@@ -5,8 +5,8 @@
     "date": "2025-12-18",
     "excerpt": "Introduction to our free web tool that lets anyone predict reactivity ratios, Kp, Tg, and water solubility from molecular structure... and how to use it.",
     "tags": ["Machine Learning", "Tools", "Polymer Science"],
-    "image": "posts/2025-12-18-polymatai.jpg",
-    "file": "posts/2025-12-18-polymatai.md",
+    "image": "2025-12-18-polymatai.jpg",
+    "file": "2025-12-18-polymatai.md",
     "readingTime": 5
   },
   {
@@ -15,8 +15,8 @@
     "date": "2025-02-10",
     "excerpt": "How I went from knowing little about reinforcement learning to using it for real-time control of polymerization reactors. These are the actual notebooks I wrote while teaching myself RL, now cleaned up so you can learn the same way I did.",
     "tags": ["Research", "Machine Learning", "Personal"],
-    "image": "posts/2025-02-10-RL_Journey.jpg",
-    "file": "posts/2025-02-10-RL_Journey.md",
+    "image": "2025-02-10-RL_Journey.jpg",
+    "file": "2025-02-10-RL_Journey.md",
     "readingTime": 8
   }
 ]
