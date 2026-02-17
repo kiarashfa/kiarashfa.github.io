@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kiarashfa.github.io/sitemap.xml
