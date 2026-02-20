@@ -410,13 +410,13 @@ h1 {
     background: transparent;
     border: 1.5px solid transparent;
     background-image: conic-gradient(
-        from 0deg,
-        rgba(73, 197, 182, 0.7),
-        rgba(255, 147, 152, 0.5),
-        rgba(73, 197, 182, 0.1),
-        rgba(255, 147, 152, 0.5),
-        rgba(73, 197, 182, 0.7)
-    );
+       from 0deg,
+       rgba(255, 147, 152, 0.5),
+       rgba(73, 197, 182, 0.7),
+       rgba(255, 147, 152, 0.1),
+       rgba(73, 197, 182, 0.7),
+       rgba(255, 147, 152, 0.5)
+   );
     background-origin: border-box;
     -webkit-mask:
         linear-gradient(#fff 0 0) padding-box,
