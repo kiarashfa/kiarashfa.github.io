@@ -968,7 +968,7 @@ h1 {
         letter-spacing: 0.04em !important;
     }
     .hero .subtitle:nth-of-type(2) {
-        font-size: clamp(1.0rem, 2.8vw, 1.2rem) !important;
+        font-size: clamp(1.0rem, 2.4vw, 1.2rem) !important;
     }
    
     .glass-card {
