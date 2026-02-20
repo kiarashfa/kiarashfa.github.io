@@ -948,9 +948,11 @@ h1 {
     .cursor { display: none; }
     
     .nav-bar {
-        padding: 1.5rem;
-        flex-direction: column;
-        gap: 1rem;
+        padding: 1.2rem 1.5rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
     }
     
     .nav-links {
@@ -962,11 +964,11 @@ h1 {
     .section-title { font-size: 2rem; }
 
     .hero .subtitle:first-of-type {
-        font-size: clamp(1.2rem, 6vw, 2.5rem) !important;
+        font-size: clamp(1.6rem, 6vw, 2.5rem) !important;
         letter-spacing: 0.04em !important;
     }
     .hero .subtitle:nth-of-type(2) {
-        font-size: clamp(0.9rem, 3.5vw, 1.35rem) !important;
+        font-size: clamp(1.2rem, 3.5vw, 1.35rem) !important;
     }
    
     .glass-card {
