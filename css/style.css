@@ -211,6 +211,9 @@ body {
 @media (max-width: 768px) {
     .nav-bar {
         padding: 1.5rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
     
     .mobile-menu-toggle {
@@ -954,10 +957,18 @@ h1 {
         gap: 1rem;
     }
     
-    h1 { font-size: 3rem; }
+    h1 { font-size: clamp(2rem, 10vw, 3rem); letter-spacing: 0.1em; }
     .subtitle { font-size: 1rem; }
     .section-title { font-size: 2rem; }
-    
+
+    .hero .subtitle:first-of-type {
+        font-size: clamp(1.2rem, 6vw, 2.5rem) !important;
+        letter-spacing: 0.04em !important;
+    }
+    .hero .subtitle:nth-of-type(2) {
+        font-size: clamp(0.9rem, 3.5vw, 1.35rem) !important;
+    }
+   
     .glass-card {
         padding: 2rem;
     }
