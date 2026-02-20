@@ -959,12 +959,12 @@ h1 {
         gap: 1rem;
     }
     
-    h1 { font-size: clamp(2rem, 10vw, 3rem); letter-spacing: 0.1em; }
+    h1 { font-size: clamp(2rem, 10vw, 4rem); letter-spacing: 0.1em; }
     .subtitle { font-size: 1rem; }
     .section-title { font-size: 2rem; }
 
     .hero .subtitle:first-of-type {
-        font-size: clamp(1.6rem, 6vw, 2.5rem) !important;
+        font-size: clamp(1.4rem, 6vw, 2.5rem) !important;
         letter-spacing: 0.04em !important;
     }
     .hero .subtitle:nth-of-type(2) {
