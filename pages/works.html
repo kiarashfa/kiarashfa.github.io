@@ -105,35 +105,36 @@
         
         .section-description {
             font-size: 1rem;
-            line-height: 1.7;
-            opacity: 0.8;
+            line-height: 1.8;
+            opacity: 0.9;
             margin-bottom: 2rem;
             font-weight: 300;
         }
         
-        /* Publication Card */
+        /* Publication Card - Redesigned for professionalism */
         .publication-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
             pointer-events: auto;
             cursor: none;
             overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .publication-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(73, 197, 182, 0.4);
-            transform: translateX(10px);
-            box-shadow: 0 10px 40px rgba(73, 197, 182, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(73, 197, 182, 0.2);
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(73, 197, 182, 0.15);
         }
         
         .publication-card.expanded {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
         }
         
         .publication-header {
@@ -145,8 +146,8 @@
         }
         
         .publication-title {
-            font-size: 1.3rem;
-            font-weight: 400;
+            font-size: 1.4rem;
+            font-weight: 500;
             line-height: 1.5;
             color: #fff;
             margin: 0 0 0.5rem 0;
@@ -154,8 +155,8 @@
         }
         
         .expand-icon {
-            color: rgba(73, 197, 182, 0.6);
-            font-size: 1.2rem;
+            color: rgba(73, 197, 182, 0.7);
+            font-size: 1.3rem;
             transition: all 0.3s ease;
             flex-shrink: 0;
             margin-top: 0.3rem;
@@ -175,38 +176,28 @@
         
         .publication-authors {
             font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.2rem;
             font-weight: 300;
-        }
-        
-        .publication-excerpt {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            opacity: 0.8;
-            margin-bottom: 1rem;
-        }
-        
-        .publication-details {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: all 0.5s ease;
-        }
-        
-        .publication-card.expanded .publication-details {
-            max-height: 2000px;
-            opacity: 1;
-            margin-top: 1.5rem;
-        }
-        
-        .publication-meta {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            flex-wrap: wrap;
+        }
+
+        .authors-label {
+            font-weight: bold;
+            color: #49c5b6;
+        }
+
+        .authors-list {
+            font-style: italic;
+        }
+        
+        /* Publication meta row (preview) - Changed to grid for better alignment */
+        .publication-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .meta-item {
@@ -216,42 +207,68 @@
         }
         
         .meta-label {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
         
         .meta-value {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .publication-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .publication-card.expanded .publication-details {
+            max-height: 2000px;
+            opacity: 1;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .details-left {
+            flex: 1 1 60%;
+            min-width: 300px;
+        }
+
+        .details-right {
+            flex: 0 0 35%;
+            max-width: 400px;
         }
         
         .graphical-abstract {
-            margin-bottom: 1.5rem;
-            border-radius: 15px;
+            margin-bottom: 0;
+            border-radius: 8px;
             overflow: hidden;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
         
         .graphical-abstract img {
             width: 100%;
             height: auto;
             display: block;
+            transition: transform 0.3s ease;
         }
         
-        .graphical-abstract-label {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-            text-align: center;
-            padding: 0.8rem;
-            font-style: italic;
+        .publication-card:hover .graphical-abstract img {
+            transform: scale(1.03);
         }
         
         .publication-journal {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 1rem;
             font-style: italic;
         }
@@ -263,15 +280,17 @@
         
         .publication-description {
             font-size: 0.95rem;
-            line-height: 1.7;
-            opacity: 0.8;
+            line-height: 1.8;
+            opacity: 0.85;
             margin-bottom: 1.5rem;
+            text-align: justify;
         }
         
         .publication-links {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
+            width: 100%;
         }
         
         .pub-link {
@@ -279,9 +298,9 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.6rem 1.2rem;
-            background: rgba(73, 197, 182, 0.1);
-            border: 1px solid rgba(73, 197, 182, 0.3);
-            border-radius: 25px;
+            background: rgba(73, 197, 182, 0.08);
+            border: 1px solid rgba(73, 197, 182, 0.2);
+            border-radius: 8px;
             color: #49c5b6;
             text-decoration: none;
             font-size: 0.85rem;
@@ -291,22 +310,22 @@
         }
         
         .pub-link:hover {
-            background: rgba(73, 197, 182, 0.25);
+            background: rgba(73, 197, 182, 0.2);
             border-color: #49c5b6;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(73, 197, 182, 0.3);
+            box-shadow: 0 4px 12px rgba(73, 197, 182, 0.2);
         }
         
         .pub-link.github {
-            background: rgba(255, 147, 152, 0.1);
-            border-color: rgba(255, 147, 152, 0.3);
+            background: rgba(255, 147, 152, 0.08);
+            border-color: rgba(255, 147, 152, 0.2);
             color: #FF9398;
         }
         
         .pub-link.github:hover {
-            background: rgba(255, 147, 152, 0.25);
+            background: rgba(255, 147, 152, 0.2);
             border-color: #FF9398;
-            box-shadow: 0 5px 15px rgba(255, 147, 152, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 147, 152, 0.2);
         }
         
         .pub-link.placeholder {
@@ -320,8 +339,8 @@
             align-items: center;
             gap: 0.4rem;
             padding: 0.4rem 1rem;
-            background: rgba(255, 147, 152, 0.15);
-            border: 1px solid rgba(255, 147, 152, 0.3);
+            background: rgba(255, 147, 152, 0.1);
+            border: 1px solid rgba(255, 147, 152, 0.2);
             border-radius: 20px;
             font-size: 0.8rem;
             color: #FF9398;
@@ -349,12 +368,22 @@
             }
             
             .publication-meta {
+                grid-template-columns: 1fr;
                 gap: 1rem;
             }
             
             .works-container {
                 padding: 1.5rem;
                 padding-top: 100px;
+            }
+
+            .publication-details {
+                flex-direction: column;
+            }
+
+            .details-right {
+                width: 100%;
+                max-width: none;
             }
         }
     </style>
@@ -401,11 +430,11 @@
             <h1>Research Works</h1>
             <p class="subtitle">Bridging Polymer Science and Artificial Intelligence</p>
             <p class="narrative">
-                My research journey explores the intersection of polymer reaction engineering and machine learning.<br>
+                My research explores the intersection of polymer reaction engineering and machine learning.<br>
                 Rather than choosing between data-driven approaches and first-principles models, I work to combine their
-                strengths by incorporating  domain knowledge from polymer chemistry into neural networks. This dual-tango
-                between chemistry and AI has led to breakthroughs in predicting polymer properties,
-                modeling complex polymerization processes, and even real-time control of chemical reactors.
+                strengths by bringing domain knowledge from polymer chemistry into neural networks and applying these
+                ML models back in the field. This tango between chemistry and AI has led to breakthroughs in predicting
+                polymer properties, modeling complex polymerization processes, and even real-time control of chemical reactors.
             </p>
         </div>
 
@@ -415,12 +444,12 @@
                 <div class="section-icon">
                     <i class="fas fa-database"></i>
                 </div>
-                <h2 class="section-title">Data-Driven Machine Learning</h2>
+                <h2 class="section-title">Part 1: Data-Driven Machine Learning</h2>
             </div>
             <p class="section-description">
-                My journey began with pure data-driven approaches, training neural networks on experimental data to predict 
-                polymer properties that are difficult or time-consuming to measure. These foundational works demonstrated 
-                the power of machine learning in polymer science and highlighted both its potential and limitations.
+                My journey began with pure data-driven approaches, training various ML models on experimental data to predict
+                monomer/polymer properties that are difficult or time-consuming to measure. These foundational works demonstrated
+                the power of ML in polymer science and highlighted both its potential and limitations.
             </p>
             
             <!-- Publication 1 -->
@@ -430,16 +459,6 @@
                         <h3 class="publication-title">An artificial neural network to predict reactivity ratios in radical copolymerization</h3>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
-                    <p class="publication-authors">
-                        Kiarash Farajzadehahary, Xabier Telleria-Allika, José M Asua, Nicholas Ballard
-                    </p>
-                    <p class="publication-excerpt">
-                        Developed an artificial neural network trained on 5,000+ monomer pairs that predicts reactivity ratios solely from 
-                        molecular structure, significantly outperforming classical approaches like the Q-e scheme.
-                    </p>
-                </div>
-                
-                <div class="publication-details">
                     <div class="publication-meta">
                         <div class="meta-item">
                             <span class="meta-label">Year</span>
@@ -457,25 +476,38 @@
                             <span class="meta-label">Publisher</span>
                             <span class="meta-value">Royal Society of Chemistry</span>
                         </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Impact Factor</span>
+                            <span class="meta-value">4.0</span>
+                        </div>
                     </div>
-                    
-                    <div class="graphical-abstract">
-                        <img src="../assets/gallery/GA_pch_2023.jpg">
-                        <div class="graphical-abstract-label">Graphical Abstract</div>
+                </div>
+                
+                <div class="publication-details">
+                    <div class="details-left">
+                        <p class="publication-authors">
+                            <span class="authors-label">Authors:</span> <span class="authors-list">Kiarash Farajzadehahary, Xabier Telleria-Allika, José M Asua, Nicholas Ballard</span>
+                        </p>
+                        <p class="publication-description">
+                            Reactivity ratios govern polymerization rate, copolymer composition, and sequence distribution, yet measuring them is notoriously difficult.
+                            We trained a neural network on 5,000+ monomer pairs from the Polymer Handbook that predicts these ratios purely from molecular structure,
+                            significantly outperforming the classical Q-e scheme and unlocking predictions for monomer pairs with no existing kinetic data.
+                        </p>
                     </div>
-                    
-                    <p class="publication-description">
-                        Monomer reactivity ratios are central to understanding polymerization rate, copolymer composition, and sequence distribution, 
-                        but their measurement is non-trivial. We developed an artificial neural network trained on 5,000+ monomer pairs from the 
-                        Polymer Handbook that predicts reactivity ratios solely from molecular structure using fingerprints. The model significantly 
-                        outperforms classical approaches like the Q-e scheme and enables predictions for monomer pairs with no available kinetic data.
-                    </p>
+                    <div class="details-right">
+                        <div class="graphical-abstract">
+                            <img src="../assets/gallery/GA_pch_2023.jpg">
+                        </div>
+                    </div>
                     <div class="publication-links">
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9D1FftIAAAAJ&citation_for_view=9D1FftIAAAAJ:u5HHmVD_uO8C" class="pub-link" target="_blank">
+                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=9D1FftIAAAAJ:u5HHmVD_uO8C" class="pub-link" target="_blank">
                             <i class="fas fa-graduation-cap"></i> Google Scholar
                         </a>
                         <a href="https://doi.org/10.1039/D3PY00246B" class="pub-link" target="_blank">
                             <i class="fas fa-external-link-alt"></i> DOI: 10.1039/D3PY00246B
+                        </a>
+                        <a href="https://github.com/PolymatGIQ/ANN_reactivity_ratios" class="pub-link github" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
                         </a>
                     </div>
                 </div>
@@ -488,16 +520,6 @@
                         <h3 class="publication-title">Multi-property ML Models to Accelerate the Transition Towards Bio-Based Polymers</h3>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
-                    <p class="publication-authors">
-                        Kiarash Farajzadehahary, Nicholas Ballard
-                    </p>
-                    <p class="publication-excerpt">
-                        Created an integrated ML framework that simultaneously predicts four critical properties to systematically evaluate 
-                        bio-based monomer pairs as replacements for conventional petroleum-based formulations.
-                    </p>
-                </div>
-                
-                <div class="publication-details">
                     <div class="publication-meta">
                         <div class="meta-item">
                             <span class="meta-label">Year</span>
@@ -515,40 +537,53 @@
                             <span class="meta-label">Publisher</span>
                             <span class="meta-value">John Wiley & Sons</span>
                         </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Impact Factor</span>
+                            <span class="meta-value">New Journal</span>
+                        </div>
                     </div>
-                    
-                    <div class="graphical-abstract">
-                        <img src="../assets/gallery/GA_aid_2026.jpg">
-                        <div class="graphical-abstract-label">Graphical Abstract</div>
+                </div>
+                
+                <div class="publication-details">
+                    <div class="details-left">
+                        <p class="publication-authors">
+                            <span class="authors-label">Authors:</span> <span class="authors-list">Kiarash Farajzadehahary, Nicholas Ballard</span>
+                        </p>
+                        <p class="publication-description">
+                            Replacing oil-based monomers with sustainable bio-based alternatives demands simultaneous optimization of multiple properties.
+                            We built an integrated ML framework, combining neural networks and gradient boosting, that predicts propagation rate,
+                            reactivity ratios, glass transition temperature, and water solubility at once. Validated against real experimental case studies,
+                            the framework successfully identified bio-based replacements that match the performance of conventional systems.
+                        </p>
                     </div>
-                    
-                    <p class="publication-description">
-                        The transition toward sustainable polymers requires replacing petroleum-based monomers with bio-based alternatives. 
-                        We present an integrated ML framework that simultaneously predicts four critical properties: propagation rate constant, 
-                        reactivity ratios, glass transition temperature, and water solubility. Using neural networks and gradient boosting, 
-                        we created a unified selection tool that systematically evaluates bio-based monomer pairs. Validated through experimental 
-                        case studies replacing n-butyl acrylate/methyl methacrylate and n-butyl acrylate/styrene, our framework successfully 
-                        identified viable bio-based alternatives achieving comparable performance to conventional systems.
-                    </p>
+                    <div class="details-right">
+                        <div class="graphical-abstract">
+                            <img src="../assets/gallery/GA_aid_2026.jpg">
+                        </div>
+                    </div>
                     <div class="publication-links">
                         <a href="https://scholar.google.com/citations?view_op=view_citation&user=YOUR_USER_ID" class="pub-link" target="_blank">
                             <i class="fas fa-graduation-cap"></i> Google Scholar
                         </a>
                         <a href="https://doi.org/10.1002/aidi.70089" class="pub-link" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> DOI: 10.1002/aidi.70089
+                            <i class="fas fa-external-link-alt"></i> DOI: 10.1002/aidi.202500248
+                        </a>
+                        </a>
+                        <a href="https://github.com/PolymatGIQ/biobased" class="pub-link github" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: Physics-Informed Neural Networks -->
+        <!-- Section 2: Informed Neural Networks -->
         <section class="research-section">
             <div class="section-header">
                 <div class="section-icon">
                     <i class="fas fa-atom"></i>
                 </div>
-                <h2 class="section-title">Informed Neural Networks</h2>
+                <h2 class="section-title">Part 2: Informed Neural Networks</h2>
             </div>
             <p class="section-description">
                 In polymer science and engineering, we don't have the luxury of abundant data. But even when we do have data, it would be 
@@ -559,23 +594,13 @@
                 chemistry, enabling us to build smarter models that respect the underlying science.
             </p>
             
-            <!-- Publication 3 -->
+            <!-- Publication 3: PCINNs solution polymerization -->
             <div class="publication-card" onclick="toggleCard(this)">
                 <div class="publication-preview">
                     <div class="publication-header">
-                        <h3 class="publication-title">Polymer chemistry informed neural networks (PCINNs) for modelling of polymerization processes</h3>
+                        <h3 class="publication-title">PCINNs for modelling of solution polymerization processes</h3>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
-                    <p class="publication-authors">
-                        Nicholas Ballard, Jon Larrañaga, Kiarash Farajzadehahary, José M Asua
-                    </p>
-                    <p class="publication-excerpt">
-                        Introduced a method to incorporate polymerization kinetic knowledge into neural network training, enabling accurate 
-                        models using datasets as small as a single sample while maintaining extrapolation capabilities.
-                    </p>
-                </div>
-                
-                <div class="publication-details">
                     <div class="publication-meta">
                         <div class="meta-item">
                             <span class="meta-label">Year</span>
@@ -593,48 +618,51 @@
                             <span class="meta-label">Publisher</span>
                             <span class="meta-value">Royal Society of Chemistry</span>
                         </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Impact Factor</span>
+                            <span class="meta-value">4.0</span>
+                        </div>
                     </div>
-                    
-                    <div class="graphical-abstract">
-                        <img src="../assets/gallery/GA_pch_2024.jpg">
-                        <div class="graphical-abstract-label">Graphical Abstract</div>
+                </div>
+                
+                <div class="publication-details">
+                    <div class="details-left">
+                        <p class="publication-authors">
+                            <span class="authors-label">Authors:</span> <span class="authors-list">Nicholas Ballard, Jon Larrañaga, Kiarash Farajzadehahary, José M Asua</span>
+                        </p>
+                        <p class="publication-description">
+                            Neural networks typically demand large datasets and fail at extrapolation, two deal-breakers in polymer science.
+                            By weaving polymerization kinetic models directly into the training process, we showed that accurate predictive
+                            models can be built from limited data and imperfect theoretical models. Demonstrated for solution polymerization,
+                            PCINNs significantly outperform both conventional neural networks and existing first-principles kinetic models.
+                        </p>
                     </div>
-                    
-                    <p class="publication-description">
-                        Neural networks typically require large datasets and struggle with extrapolation. We demonstrate how polymerization 
-                        kinetic models can be incorporated into the training process to overcome these limitations. This enables accurate, 
-                        data-driven predictive models using datasets as small as a single sample. Demonstrated for solution polymerization, 
-                        the approach significantly outperforms conventional neural networks and can even improve upon existing first-principles 
-                        kinetic models.
-                    </p>
+                    <div class="details-right">
+                        <div class="graphical-abstract">
+                            <img src="../assets/gallery/GA_pch_2024.jpg">
+                        </div>
+                    </div>
                     <div class="publication-links">
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9D1FftIAAAAJ&citation_for_view=9D1FftIAAAAJ:9yKSN-GCB0IC" class="pub-link" target="_blank">
+                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=9D1FftIAAAAJ:9yKSN-GCB0IC" class="pub-link" target="_blank">
                             <i class="fas fa-graduation-cap"></i> Google Scholar
                         </a>
                         <a href="https://doi.org/10.1039/D4PY00995A" class="pub-link" target="_blank">
                             <i class="fas fa-external-link-alt"></i> DOI: 10.1039/D4PY00995A
                         </a>
+                        <a href="https://github.com/PolymatGIQ/PCINN" class="pub-link github" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
                     </div>
                 </div>
             </div>
             
-            <!-- Publication 4 -->
+            <!-- Publication 4: PCINNs emulsion polymerization -->
             <div class="publication-card" onclick="toggleCard(this)">
                 <div class="publication-preview">
                     <div class="publication-header">
                         <h3 class="publication-title">PCINN for Predictive Models of Complex Emulsion Polymerization Processes</h3>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
-                    <p class="publication-authors">
-                        Shaghayegh Hamzehlou, Kiarash Farajzadehahary, Jon Larrañaga, Nicholas Ballard, José M. Asua
-                    </p>
-                    <p class="publication-excerpt">
-                        Extended PCINNs to the challenging case of emulsion polymerization, demonstrating substantially improved predictions 
-                        for this complex industrial process and enabling fast, real-time predictions as a real-time on-the-fly model.
-                    </p>
-                </div>
-                
-                <div class="publication-details">
                     <div class="publication-meta">
                         <div class="meta-item">
                             <span class="meta-label">Year</span>
@@ -652,20 +680,27 @@
                             <span class="meta-label">Publisher</span>
                             <span class="meta-value">Royal Society of Chemistry</span>
                         </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Impact Factor</span>
+                            <span class="meta-value">4.0</span>
+                        </div>
                     </div>
-                    
-                    <div class="graphical-abstract">
-                        <img src="../assets/gallery/GA_pch_2026.jpg">
-                        <div class="graphical-abstract-label">Graphical Abstract</div>
+                </div>
+                
+                <div class="publication-details">
+                    <div class="details-left">
+                        <p class="publication-authors">
+                            <span class="authors-label">Authors:</span> <span class="authors-list">Shaghayegh Hamzehlou, Kiarash Farajzadehahary, Jon Larrañaga, Nicholas Ballard, José M. Asua</span>
+                        </p>
+                        <p class="publication-description">
+                            Emulsion polymerization is exceptionally challenging to model, as compartmentalized radical kinetics meet complex colloidal phenomena. We developed a PCINN for seeded semibatch emulsion polymerization of n-butyl acrylate that fuses first-principles knowledge with data-driven components. The result: substantially improved prediction accuracy over both mechanistic models and standard neural networks, fast enough to serve as an on-the-fly model for real-time industrial applications.
+                        </p>
                     </div>
-                    
-                    <p class="publication-description">
-                        Emulsion polymerization modeling is exceptionally challenging, requiring understanding of compartmentalized radical 
-                        polymerization kinetics and complex colloidal phenomena. We developed a PCINN that combines first-principles knowledge 
-                        with data-driven components for seeded semibatch emulsion polymerization of n-butyl acrylate. Compared to purely 
-                        mechanistic models and standard neural networks, PCINNs showed substantially improved prediction accuracy and can 
-                        serve as on-the-fly models for fast, real-time predictions of this complex industrial process.
-                    </p>
+                    <div class="details-right">
+                        <div class="graphical-abstract">
+                            <img src="../assets/gallery/GA_pch_2026.jpg">
+                        </div>
+                    </div>
                     <div class="publication-links">
                         <a href="https://scholar.google.com/citations?view_op=view_citation&user=YOUR_USER_ID" class="pub-link" target="_blank">
                             <i class="fas fa-graduation-cap"></i> Google Scholar
@@ -677,7 +712,7 @@
                 </div>
             </div>
             
-            <!-- Publication 5 - Ongoing -->
+            <!-- Publication 5: PCINNs RAFT - Ongoing -->
             <div class="publication-card" onclick="toggleCard(this)">
                 <div class="publication-preview">
                     <div class="publication-header">
@@ -687,32 +722,42 @@
                         </h3>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
-                    <p class="publication-authors">
-                        Kiarash Farajzadehahary, et al.
-                    </p>
-                    <p class="publication-excerpt">
-                        Extending PCINNs to RAFT polymerization: Multi-objective experimental design, and active learning
-                    </p>
-                </div>
-                
-                <div class="publication-details">
                     <div class="publication-meta">
                         <div class="meta-item">
-                            <span class="meta-label">Status</span>
+                            <span class="meta-label">Year</span>
+                            <span class="meta-value">2026</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Journal</span>
                             <span class="meta-value">In Progress</span>
                         </div>
                         <div class="meta-item">
-                            <span class="meta-label">Target Journal</span>
-                            <span class="meta-value">To be submitted</span>
+                            <span class="meta-label">Volume</span>
+                            <span class="meta-value">#TBD</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Publisher</span>
+                            <span class="meta-value">#TBD</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Impact Factor</span>
+                            <span class="meta-value">#TBD</span>
                         </div>
                     </div>
-                    
-                    <p class="publication-description">
-                        Extending PCINNs to RAFT polymerization with three key objectives: (1) Optimize kinetic rate constants (kp, kt, kadd, kd) 
-                        using the trained PINN as a fast surrogate model, (2) Generate Pareto fronts using multi-objective optimization (NSGA-II) 
-                        to find optimal experimental conditions balancing competing objectives like conversion vs. residence time, and (3) Implement 
-                        active learning by using ensemble prediction uncertainty to guide the selection of the next most informative experiment.
-                    </p>
+                </div>
+                
+                <div class="publication-details">
+                    <div class="details-left">
+                        <p class="publication-authors">
+                            <span class="authors-label">Authors:</span> <span class="authors-list">Kiarash Farajzadehahary, et al.</span>
+                        </p>
+                        <p class="publication-description">
+                            Extending PCINNs into RAFT polymerization territory with three ambitious goals: optimizing kinetic rate constants
+                            using trained PINNs as fast surrogates, generating Pareto fronts via multi-objective optimization (NSGA-II) to
+                            balance competing objectives like conversion vs. residence time, and deploying active learning that uses ensemble
+                            prediction uncertainty to guide the selection of the next most informative experiment.
+                        </p>
+                    </div>
                     <div class="publication-links">
                         <a href="#" class="pub-link placeholder">
                             <i class="fas fa-graduation-cap"></i> Google Scholar (Coming Soon)
@@ -728,38 +773,27 @@
             </div>
         </section>
 
-        <!-- Section 3: Reinforcement Learning -->
+        <!-- Assuming Section 3: Reinforcement Learning (based on context) -->
         <section class="research-section">
             <div class="section-header">
                 <div class="section-icon">
                     <i class="fas fa-robot"></i>
                 </div>
-                <h2 class="section-title">Reinforcement Learning</h2>
+                <h2 class="section-title">Part 3: Reinforcement Learning</h2>
             </div>
             <p class="section-description">
-                Beyond prediction, I work to integrate machine learning directly into the chemical environment by creating AI agents 
-                that can control polymerization reactors in real-time. This "dual-tango" between the virtual and physical worlds 
-                represents the cutting edge of process control, where reinforcement learning agents learn optimal control strategies 
-                through interaction with reactor systems.
-            </p>
+                Beyond prediction, I work to integrate machine learning directly into the chemical environment by creating AI agents that can
+                control polymerization reactors in real-time. This "dual-tango" between the virtual and physical worlds represents the cutting
+                edge of process control, where reinforcement learning agents learn optimal control strategies through interaction with reactor systems.
             
-            <!-- Publication 6 -->
+            
+            <!-- Publication 6: RL Particle Morphology -->
             <div class="publication-card" onclick="toggleCard(this)">
                 <div class="publication-preview">
                     <div class="publication-header">
-                        <h3 class="publication-title">Reinforcement learning for the optimization and online control of polymerization reactors: Particle morphology</h3>
+                        <h3 class="publication-title">Reinforcement learning for the optimization and online control of polymerization reactors: Morphology</h3>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
-                    <p class="publication-authors">
-                        Nicholas Ballard, Kiarash Farajzadehahary, Shaghayegh Hamzehlou, Usue Mori, José M Asua
-                    </p>
-                    <p class="publication-excerpt">
-                        Demonstrated that reinforcement learning can train neural networks to select optimal real-time control actions 
-                        for targeting desired polymer particle morphology, with a state estimator enabling full online control.
-                    </p>
-                </div>
-                
-                <div class="publication-details">
                     <div class="publication-meta">
                         <div class="meta-item">
                             <span class="meta-label">Year</span>
@@ -777,22 +811,29 @@
                             <span class="meta-label">Publisher</span>
                             <span class="meta-value">Elsevier</span>
                         </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Impact Factor</span>
+                            <span class="meta-value">3.9</span>
+                        </div>
                     </div>
-                    
-                    <div class="graphical-abstract">
-                        <img src="../assets/gallery/GA_jce_2024.jpg">
-                        <div class="graphical-abstract-label">Graphical Abstract</div>
+                </div>
+                
+                <div class="publication-details">
+                    <div class="details-left">
+                        <p class="publication-authors">
+                            <span class="authors-label">Authors:</span> <span class="authors-list">Nicholas Ballard, Kiarash Farajzadehahary, Shaghayegh Hamzehlou, Usue Mori, José M Asua</span>
+                        </p>
+                        <p class="publication-description">
+                            Online control of emulsion polymerization is hampered by process complexity and the impossibility of measuring particle morphology in real time. We showed in silico that reinforcement learning can train neural networks to select optimal control actions targeting desired morphology. A second neural network serves as a state estimator, enabling full online control of a property that cannot be directly measured, opening the door to truly autonomous reactor operation.
+                        </p>
                     </div>
-                    
-                    <p class="publication-description">
-                        Online control of emulsion polymerization is challenging due to process complexity and difficulties in online measurement. 
-                        We explored reinforcement learning for online control of particle morphology, showing in silico that given a mathematical 
-                        model of system dynamics RL can train neural networks to select optimal real-time control actions targeting desired polymer 
-                        products. Additionally, a second neural network serves as a state estimator, enabling full online control of particle 
-                        morphology which cannot be directly measured online.
-                    </p>
+                    <div class="details-right">
+                        <div class="graphical-abstract">
+                            <img src="../assets/gallery/GA_jce_2024.jpg">
+                        </div>
+                    </div>
                     <div class="publication-links">
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9D1FftIAAAAJ&citation_for_view=9D1FftIAAAAJ:d1gkVwhDpl0C" class="pub-link" target="_blank">
+                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=9D1FftIAAAAJ:d1gkVwhDpl0C" class="pub-link" target="_blank">
                             <i class="fas fa-graduation-cap"></i> Google Scholar
                         </a>
                         <a href="https://doi.org/10.1016/j.compchemeng.2024.108739" class="pub-link" target="_blank">
@@ -800,25 +841,15 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div></p>
             
             <!-- Publication 7 -->
             <div class="publication-card" onclick="toggleCard(this)">
                 <div class="publication-preview">
                     <div class="publication-header">
-                        <h3 class="publication-title">Reinforcement learning for the optimization and online control of polymerization reactors: Molar mass distributions</h3>
+                        <h3 class="publication-title">Reinforcement learning for the optimization and online control of polymerization reactors: MWD</h3>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
-                    <p class="publication-authors">
-                        Kiarash Farajzadehahary, Shaghayegh Hamzehlou, Nicholas Ballard, José M. Asua
-                    </p>
-                    <p class="publication-excerpt">
-                        Developed an RL-based control system using a surrogate neural network model to enable real-time optimization of molar 
-                        mass distribution for non-linear polymers, a previously intractable control problem.
-                    </p>
-                </div>
-                
-                <div class="publication-details">
                     <div class="publication-meta">
                         <div class="meta-item">
                             <span class="meta-label">Year</span>
@@ -836,20 +867,31 @@
                             <span class="meta-label">Publisher</span>
                             <span class="meta-value">Elsevier</span>
                         </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Impact Factor</span>
+                            <span class="meta-value">3.9</span>
+                        </div>
                     </div>
-                    
-                    <div class="graphical-abstract">
-                        <img src="../assets/gallery/GA_jce_2026.jpg">
-                        <div class="graphical-abstract-label">Graphical Abstract</div>
+                </div>
+                
+                <div class="publication-details">
+                    <div class="details-left">
+                        <p class="publication-authors">
+                            <span class="authors-label">Authors:</span> <span class="authors-list">Kiarash Farajzadehahary, Shaghayegh Hamzehlou, Nicholas Ballard, José M. Asua</span>
+                        </p>
+                        <p class="publication-description">
+                            Controlling molar mass distribution of non-linear polymers with crosslinked and branched chains has been a notoriously
+                            intractable problem. We developed an RL-based control system for semi-batch emulsion polymerization of butyl acrylate
+                            that optimizes seed selection, feeding rates, and temperature while gracefully handling disturbances like pump errors.
+                            A surrogate neural network model slashes training time and gives operators predictive capabilities to evaluate strategies
+                            and anticipate outcomes in real time.
+                        </p>
                     </div>
-                    
-                    <p class="publication-description">
-                        Controlling molar mass distribution (MMD) of non-linear polymers containing crosslinked/branched chains is notoriously 
-                        difficult due to measurement limitations and computational complexity of kinetic models. We developed an RL-based control 
-                        system for semi-batch emulsion polymerization of butyl acrylate that optimizes seed selection, feeding rates, and temperature 
-                        while handling disturbances like pump errors. A key innovation is using a surrogate neural network-based model that dramatically 
-                        reduces training time and provides predictive capabilities for operators to evaluate strategies and anticipate outcomes in real-time.
-                    </p>
+                    <div class="details-right">
+                        <div class="graphical-abstract">
+                            <img src="../assets/gallery/GA_jce_2026.jpg">
+                        </div>
+                    </div>
                     <div class="publication-links">
                         <a href="https://scholar.google.com/citations?view_op=view_citation&user=YOUR_USER_ID" class="pub-link" target="_blank">
                             <i class="fas fa-graduation-cap"></i> Google Scholar
@@ -871,33 +913,41 @@
                         </h3>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
-                    <p class="publication-authors">
-                        Kiarash Farajzadehahary, Nicholas Ballard
-                    </p>
-                    <p class="publication-excerpt">
-                        Moving from simulation to reality by implementing our RL control system on actual laboratory equipment, with 
-                        the agent now controlling real polymerization processes in our calorimetry reactor.
-                    </p>
+                    <div class="publication-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Year</span>
+                            <span class="meta-value">2026</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Journal</span>
+                            <span class="meta-value">In ProgressD</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Volume</span>
+                            <span class="meta-value">#TBD</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Publisher</span>
+                            <span class="meta-value">#TBD</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Impact Factor</span>
+                            <span class="meta-value">#TBD</span>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="publication-details">
-                    <div class="publication-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Status</span>
-                            <span class="meta-value">In Progress</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Target Journal</span>
-                            <span class="meta-value">To be submitted</span>
-                        </div>
+                    <div class="details-left">
+                        <p class="publication-authors">
+                            <span class="authors-label">Authors:</span> <span class="authors-list">Kiarash Farajzadehahary, Nicholas Ballard</span>
+                        </p>
+                        <p class="publication-description">
+                            From simulation to reality: the RL agent is now wired directly to our calorimetry reactor, controlling real
+                            polymerization processes in real time. This work represents the culmination of bridging AI and chemistry
+                            demonstrating that machine learning can successfully operate physical chemical reactors autonomously.
+                        </p>
                     </div>
-                    
-                    <p class="publication-description">
-                        Moving from simulation to reality: implementing our reinforcement learning control system on actual laboratory equipment. 
-                        The RL agent is now connected directly to our calorimetry reactor, controlling real polymerization processes in real-time. 
-                        This work represents the culmination of bridging AI and chemistry by demonstrating that machine learning can successfully 
-                        operate physical chemical reactors autonomously.
-                    </p>
                     <div class="publication-links">
                         <a href="#" class="pub-link placeholder">
                             <i class="fas fa-graduation-cap"></i> Google Scholar (Coming Soon)
@@ -919,15 +969,14 @@
                 <div class="section-icon">
                     <i class="fas fa-tools"></i>
                 </div>
-                <h2 class="section-title">Supporting Work & Foundations</h2>
+                <h2 class="section-title">Supporting Works</h2>
             </div>
             <p class="section-description">
-                Behind every machine learning breakthrough lies robust foundational work. Developing accurate PCINNs and RL controllers 
-                for emulsion polymerization required first building reliable mechanistic models of the process itself. The work on the 
-                average number of radicals per particle (n̄) not only solved a long-standing measurement problem but also provided 
-                the modeling foundation that made our subsequent PCINN and RL work possible. Meanwhile, our comprehensive review article 
-                in Progress in Polymer Science synthesizes the broader landscape of machine learning in polymer reaction engineering, 
-                contextualizing where this field has been and where it's headed.
+                Behind every machine learning breakthrough lies robust foundational work. Developing accurate PCINNs and RL controllers for emulsion polymerization
+                required first building reliable mechanistic models of the process itself. The work on n̄ vlaue not only solved a long-standing measurement problem
+                but also provided the modeling foundation that made our subsequent PCINN and RL work possible. And having built all kinds of models from the ground up,
+                we gained a firsthand perspective on what works, what doesn't, and what's still missing. We channeled that experience, together with the literature,
+                into a comprehensive review in Progress in Polymer Science that maps where this field has been and offers our vision for where it's headed.
             </p>
             
             <!-- Publication 9 -->
@@ -937,16 +986,6 @@
                         <h3 class="publication-title">The hidden secrets of the average number of radicals per particle (n̄)</h3>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
-                    <p class="publication-authors">
-                        Kiarash Farajzadehahary, Shaghayegh Hamzehlou, Nicholas Ballard, José M Asua
-                    </p>
-                    <p class="publication-excerpt">
-                        Showed that n̄ contains sufficient information to determine radical distribution and develop a soft sensor for 
-                        online MMD estimation, enabling for the first time online control of MMD for non-linear emulsion polymers.
-                    </p>
-                </div>
-                
-                <div class="publication-details">
                     <div class="publication-meta">
                         <div class="meta-item">
                             <span class="meta-label">Year</span>
@@ -964,22 +1003,32 @@
                             <span class="meta-label">Publisher</span>
                             <span class="meta-value">Elsevier</span>
                         </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Impact Factor</span>
+                            <span class="meta-value">13.3</span>
+                        </div>
                     </div>
-                    
-                    <div class="graphical-abstract">
-                        <img src="../assets/gallery/GA_cej_2024.jpg">
-                        <div class="graphical-abstract-label">Graphical Abstract</div>
+                </div>
+                
+                <div class="publication-details">
+                    <div class="details-left">
+                        <p class="publication-authors">
+                            <span class="authors-label">Authors:</span> <span class="authors-list">Kiarash Farajzadehahary, Shaghayegh Hamzehlou, Nicholas Ballard, José M Asua</span>
+                        </p>
+                        <p class="publication-description">
+                            Emulsion polymerization suffers from run-to-run variations because key characteristics, especially MMD of non-linear polymers,
+                            cannot be measured online. We discovered that n̄, easily obtained from calorimetric data, contains enough information to reconstruct
+                            the full radical distribution per particle. This unlocked accurate estimation of the effective termination rate and a soft sensor
+                            for online MMD estimation, offering for the first time the possibility of real-time MMD control for non-linear emulsion polymers.
+                        </p>
                     </div>
-                    
-                    <p class="publication-description">
-                        Emulsion polymerization is susceptible to run-to-run variations due to inability to measure key characteristics online, 
-                        particularly MMD of non-linear polymers. We showed that the average number of radicals per particle (n̄), easily obtained 
-                        from calorimetric measurements, contains sufficient information to determine the distribution of particles with n radicals. 
-                        This knowledge enables accurate estimation of the effective termination rate coefficient and development of a soft sensor 
-                        for on-line MMD estimation, offering for the first time the possibility of online control of MMD for non-linear emulsion polymers.
-                    </p>
+                    <div class="details-right">
+                        <div class="graphical-abstract">
+                            <img src="../assets/gallery/GA_cej_2024.jpg">
+                        </div>
+                    </div>
                     <div class="publication-links">
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9D1FftIAAAAJ&citation_for_view=9D1FftIAAAAJ:u-x6o8ySG0sC" class="pub-link" target="_blank">
+                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=9D1FftIAAAAJ:u-x6o8ySG0sC" class="pub-link" target="_blank">
                             <i class="fas fa-graduation-cap"></i> Google Scholar
                         </a>
                         <a href="https://doi.org/10.1016/j.cej.2024.150681" class="pub-link" target="_blank">
@@ -996,16 +1045,6 @@
                         <h3 class="publication-title">Adding Machine Learning to the Polymer Reaction Engineering Toolbox</h3>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
-                    <p class="publication-authors">
-                        Kiarash Farajzadehahary, Shaghayegh Hamzehlou, Nicholas Ballard
-                    </p>
-                    <p class="publication-excerpt">
-                        A comprehensive review of machine learning advances in polymer reaction engineering, with focus on combining 
-                        first-principles and data-driven approaches, published in the field's most prestigious journal.
-                    </p>
-                </div>
-                
-                <div class="publication-details">
                     <div class="publication-meta">
                         <div class="meta-item">
                             <span class="meta-label">Year</span>
@@ -1023,22 +1062,31 @@
                             <span class="meta-label">Publisher</span>
                             <span class="meta-value">Elsevier</span>
                         </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Impact Factor</span>
+                            <span class="meta-value">26.1</span>
+                        </div>
                     </div>
-                    
-                    <div class="graphical-abstract">
-                        <img src="../assets/gallery/GA_pps_2025.jpg">
-                        <div class="graphical-abstract-label">Graphical Abstract</div>
+                </div>
+                
+                <div class="publication-details">
+                    <div class="details-left">
+                        <p class="publication-authors">
+                            <span class="authors-label">Authors:</span> <span class="authors-list">Kiarash Farajzadehahary, Shaghayegh Hamzehlou, Nicholas Ballard</span>
+                        </p>
+                        <p class="publication-description">
+                            A comprehensive review, published in the most prestigious journal in the polymer world, surveying how data-driven
+                            machine learning is reshaping polymer reaction engineering. We cover key ML techniques and their successful applications
+                            in polymeric systems, map where this nascent field has been, and show where it's headed.
+                        </p>
                     </div>
-                    
-                    <p class="publication-description">
-                        Mathematical modeling has long been crucial for designing polymeric materials. While traditionally grounded in first-principles, 
-                        data-driven machine learning approaches have gained significant traction. This review discusses recent advances in applying ML 
-                        to polymer reaction engineering, with particular focus on combining the strengths of both first-principles and data-driven models. 
-                        We overview key ML techniques, explore successful applications in polymeric systems, present the state-of-the-art, and provide 
-                        perspective on future challenges and opportunities in this nascent field.
-                    </p>
+                    <div class="details-right">
+                        <div class="graphical-abstract">
+                            <img src="../assets/gallery/GA_pps_2025.jpg">
+                        </div>
+                    </div>
                     <div class="publication-links">
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9D1FftIAAAAJ&citation_for_view=9D1FftIAAAAJ:UeHWp8X0CEIC" class="pub-link" target="_blank">
+                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=9D1FftIAAAAJ:UeHWp8X0CEIC" class="pub-link" target="_blank">
                             <i class="fas fa-graduation-cap"></i> Google Scholar
                         </a>
                         <a href="https://doi.org/10.1016/j.progpolymsci.2025.102029" class="pub-link" target="_blank">
@@ -1068,16 +1116,6 @@
                         <h3 class="publication-title">Alkali-Soluble Resins as pH-Responsive Protective Colloids</h3>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
-                    <p class="publication-authors">
-                        Mehdi Naderi, Kiarash Farajzadehahary, Timo Melchin, Hans-Peter Weitzel, Jose R Leiza, José M Asua
-                    </p>
-                    <p class="publication-excerpt">
-                        Investigated pH-switchable alkali-soluble resins as stabilizers for emulsion polymers, enabling controlled 
-                        coagulation for dry polymer isolation and subsequent restabilization in water.
-                    </p>
-                </div>
-                
-                <div class="publication-details">
                     <div class="publication-meta">
                         <div class="meta-item">
                             <span class="meta-label">Year</span>
@@ -1089,29 +1127,39 @@
                         </div>
                         <div class="meta-item">
                             <span class="meta-label">Volume</span>
-                            <span class="meta-value">17(30), pp. 43750-43760</span>
+                            <span class="meta-value">17(30)</span>
                         </div>
                         <div class="meta-item">
                             <span class="meta-label">Publisher</span>
                             <span class="meta-value">American Chemical Society</span>
                         </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Impact Factor</span>
+                            <span class="meta-value">8.3</span>
+                        </div>
                     </div>
-                    
-                    <div class="graphical-abstract">
-                        <img src="../assets/gallery/GA_ami_2025.jpeg">
-                        <div class="graphical-abstract-label">Graphical Abstract</div>
+                </div>
+                
+                <div class="publication-details">
+                    <div class="details-left">
+                        <p class="publication-authors">
+                            <span class="authors-label">Authors:</span> <span class="authors-list">Mehdi Naderi, Kiarash Farajzadehahary, Timo Melchin, Hans-Peter Weitzel, Jose R Leiza, José M Asua</span>
+                        </p>
+                        <p class="publication-description">
+                            Emulsion polymers are widely used in adhesives, coatings, and construction, often preferred in dry form for storage and
+                            transportation. We investigated pH-switchable alkali-soluble resins as stabilizers that enable controlled coagulation
+                            for dry polymer isolation, followed by restabilization in water. Low Tg particles stabilized by high Tg resins were
+                            successfully isolated via pH-controlled coagulation, dried, ground, and restabilized, demonstrating a practical route
+                            for switchable emulsion polymer systems.
+                        </p>
                     </div>
-                    
-                    <p class="publication-description">
-                        Emulsion polymers are widely used in adhesives, coatings, and construction materials, often favored in dry form for easier 
-                        storage and transportation. We investigated pH-switchable alkali-soluble resins as stabilizers that enable latex coagulation 
-                        for polymer isolation, then restabilization in water. Low Tg vinyl acetate/vinyl neodecanoate particles stabilized by high Tg 
-                        alkali-soluble resins were synthesized and successfully isolated through pH-controlled coagulation, drying, and grinding. 
-                        The isolated polymer was then restabilized by adjusting pH and applying energy, demonstrating a practical route for 
-                        switchable emulsion polymer systems.
-                    </p>
+                    <div class="details-right">
+                        <div class="graphical-abstract">
+                            <img src="../assets/gallery/GA_ami_2025.jpeg">
+                        </div>
+                    </div>
                     <div class="publication-links">
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9D1FftIAAAAJ&citation_for_view=9D1FftIAAAAJ:qjMakFHDy7sC" class="pub-link" target="_blank">
+                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=9D1FftIAAAAJ:qjMakFHDy7sC" class="pub-link" target="_blank">
                             <i class="fas fa-graduation-cap"></i> Google Scholar
                         </a>
                         <a href="https://doi.org/10.1021/acsami.5c12131" class="pub-link" target="_blank">
