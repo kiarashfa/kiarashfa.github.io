@@ -238,4 +238,3 @@ function triggerStatsAnimation() {
 }
 
 window.addEventListener('scroll', triggerStatsAnimation);
-window.addEventListener('DOMContentLoaded', fetchScholarData);
