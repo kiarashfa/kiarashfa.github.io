@@ -34,8 +34,8 @@ Turns out, a chemical reactor is kind of like a game environment. It has states 
 The results? I now have RL agents that can autonomously control polymerization reactors to achieve specific molar mass distributions and particle morphologies. They can react to disturbances in real-time. They make decisions in milliseconds that would take a conventional first-principles model hours to compute.
 
 I've published research papers on this:
-- Reinforcement learning for the optimization and online control of emulsion polymerization reactors: Particle morphology. (you can find it [here](https://www.sciencedirect.com/science/article/abs/pii/S0098135424001571)).
-- Towards online control of molar mass distributions of non-linear polymers in emulsion polymerization using reinforcement learning (you can find it [here](https://www.sciencedirect.com/science/article/abs/pii/))
+- Reinforcement learning for the optimization and online control of emulsion polymerization reactors: Particle morphology. (you can find it [here](https://doi.org/10.1016/j.compchemeng.2024.108739)).
+- Towards online control of molar mass distributions of non-linear polymers in emulsion polymerization using reinforcement learning (you can find it [here](https://doi.org/10.1016/j.compchemeng.2026.109604))
 
 The mission is not finished. We're now working on making the training better, faster, and easier using offline RL and decision transformers.
 
@@ -44,10 +44,10 @@ But here's the key point: **I couldn't have done any of this without starting wi
 ## How to Use These Notebooks
 I've made these notebooks super easy to run. You've got two options:
 
-### Option 1: Google Colab (Easiest – No Setup Required)
+**Option 1: Google Colab (Easiest – No Setup Required)**
 If you just want to dive in immediately without installing anything, Google Colab is your best friend. Just download the notebooks, go to [colab.research.google.com](https://colab.research.google.com), and upload any notebook. Click "Runtime" → "Run all" and you're off to the races. Colab gives you free access to GPUs too, which is nice for the later notebooks.
 
-### Option 2: Local Environment (Full Control)
+**Option 2: Local Environment (Full Control)**
 If you want to run everything on your own computer, here's what you need:
 First, make sure you have Python 3.8 or newer. Then create a virtual environment and install the required packages:
 
@@ -91,7 +91,7 @@ Most RL courses either stay theoretical or dump you into complex libraries witho
 ## Download and Start Learning
 Ready to begin? I've packaged all the notebooks together for you. Inside you'll find the complete progression from Notebook 1 (FrozenLake) through Notebook 6 (Snake), plus both bonus notebooks (Pong and Lunar Lander). Don't skip ahead – trust me, each one builds crucial intuition for the next.
 
-**[Download the Complete RL Course Notebooks (ZIP)](https://kiarashfa.github.io/assets/resources/Materials_RL.rar)**
+**[Download the Complete RL Course Notebooks (RAR)](https://kiarashfa.github.io/assets/resources/Materials_RL.rar)**
 
 And hey, if you end up using RL for something cool (whether it's games, robotics, optimization, or controlling chemical reactors), I'd love to hear about it. That's the best part of sharing knowledge... seeing where people take it next.
 
