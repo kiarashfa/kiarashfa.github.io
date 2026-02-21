@@ -45,9 +45,11 @@ But here's the key point: **I couldn't have done any of this without starting wi
 I've made these notebooks super easy to run. You've got two options:
 
 **Option 1: Google Colab (Easiest – No Setup Required)**
+
 If you just want to dive in immediately without installing anything, Google Colab is your best friend. Just download the notebooks, go to [colab.research.google.com](https://colab.research.google.com), and upload any notebook. Click "Runtime" → "Run all" and you're off to the races. Colab gives you free access to GPUs too, which is nice for the later notebooks.
 
 **Option 2: Local Environment (Full Control)**
+
 If you want to run everything on your own computer, here's what you need:
 First, make sure you have Python 3.8 or newer. Then create a virtual environment and install the required packages:
 
