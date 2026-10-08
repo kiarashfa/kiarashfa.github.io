@@ -1,0 +1,10 @@
+---
+export interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<span class:list={['font-display tracking-[0.02em]', className]}>
+  Kiarash<i class="font-accent font-light">Fa</i>
+</span>

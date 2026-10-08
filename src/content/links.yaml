@@ -1,0 +1,25 @@
+- id: website
+  group: contact
+  label: Personal site
+  href: https://kiarashfa.github.io/website/
+  icon: globe
+- id: github
+  group: contact
+  label: GitHub
+  href: https://github.com/kiarashfa
+  icon: github
+- id: email
+  group: contact
+  label: Email
+  href: mailto:kiarashfa@gmail.com
+  icon: mail
+- id: coffee
+  group: support
+  label: Buy me a coffee
+  href: https://www.buymeacoffee.com/kiarashfa
+  icon: coffee
+- id: paypal
+  group: support
+  label: Donate via PayPal
+  href: https://www.paypal.com/donate/?hosted_button_id=S3BD5XFBMMWSJ
+  icon: paypal

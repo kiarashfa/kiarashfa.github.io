@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { SITE } from '../../config/site';
+
+const links = await getCollection('links');
+const groups = [
+  { id: 'contact', title: 'Contact' },
+  { id: 'support', title: 'Support' },
+] as const;
+---
+
+<BaseLayout title="About" description={`About ${SITE.author}, and how to reach me.`}>
+  <section class="mx-auto max-w-3xl px-4 pt-16 sm:px-8 sm:pt-24">
+    <h1 class="font-display text-[clamp(40px,5vw,72px)] leading-[0.98] font-normal tracking-[-0.01em] font-display-opsz">
+      {SITE.author}
+    </h1>
+
+    {groups.map((group) => (
+      <section class="mt-13" aria-labelledby={group.id}>
+        <h2 id={group.id} class="section-label">
+          {group.title}
+        </h2>
+        <ul class="grid gap-3">
+          {links
+            .filter((l) => l.data.group === group.id)
+            .map(({ data }) => (
+              <li>
+                <a
+                  href={data.href}
+                  class="inline-flex items-center gap-3 text-[15px] text-ink-dim no-underline transition-colors hover:text-ink"
+                >
+                  <Icon name={data.icon} class="size-4.5" />
+                  {data.label}
+                </a>
+              </li>
+            ))}
+        </ul>
+      </section>
+    ))}
+  </section>
+</BaseLayout>

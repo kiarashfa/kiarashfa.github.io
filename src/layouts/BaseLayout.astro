@@ -1,0 +1,23 @@
+---
+import '../styles/global.css';
+import { SITE } from '../config/site';
+import Head, { type Props as HeadProps } from '../components/Head.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+export type Props = HeadProps;
+---
+
+<!doctype html>
+<html lang={SITE.locale}>
+  <head>
+    <Head {...Astro.props} />
+  </head>
+  <body class="flex min-h-dvh flex-col">
+    <SiteHeader />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

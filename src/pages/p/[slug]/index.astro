@@ -1,0 +1,93 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ProjectName from '../../../components/ProjectName.astro';
+import { monthYear, yearOf } from '../../../lib/dates';
+import { familyOf, kicker, projectPath, type Project } from '../../../lib/projects';
+
+export const getStaticPaths = (async () => {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+const { family, members } = await familyOf(project);
+---
+
+<BaseLayout title={data.name} description={data.line}>
+  <article class="mx-auto max-w-3xl px-4 pt-16 sm:px-8 sm:pt-24">
+    <header>
+      <p class="text-[10.5px] tracking-[0.28em] text-brass uppercase">
+        {kicker(project, family.data.name, monthYear(data.started))}
+      </p>
+      <h1 class="mt-3.5 mb-2 font-display text-[clamp(48px,6vw,92px)] leading-[0.95] font-normal tracking-[-0.01em] font-display-opsz">
+        <ProjectName project={project} />
+      </h1>
+      <p class="text-[11px] tracking-[0.26em] text-ink-dim uppercase">
+        {data.roots[0]} + {data.roots[1]}
+      </p>
+      <p class="mt-5.5 font-accent text-[clamp(21px,1.8vw,26px)] leading-[1.3] italic">
+        {data.line}
+      </p>
+      <div class="mt-6 flex flex-wrap gap-4.5">
+        <a
+          href={data.url}
+          class="inline-flex items-center gap-2.5 rounded-full bg-linear-to-b from-[#f4f5f6] to-[#b9bec5] px-5 py-3.25 text-[12px] tracking-[0.18em] text-[#121315] uppercase no-underline shadow-[0_10px_30px_rgb(0_0_0/0.4)]"
+        >
+          Open {data.name} ↗
+        </a>
+        <a
+          href={data.repo}
+          class="inline-flex items-center gap-2.5 rounded-full border border-hair bg-white/3 px-5 py-3.25 text-[12px] tracking-[0.18em] uppercase no-underline"
+        >
+          Source
+        </a>
+      </div>
+    </header>
+
+    <div class="narrative mt-4">
+      <Content />
+    </div>
+
+    {data.notice && <p class="mt-10 text-[12px] text-ink-faint italic">{data.notice}</p>}
+
+    <section class="mt-15" aria-labelledby="family">
+      <h2 id="family" class="section-label">
+        In the family
+      </h2>
+      <h3 class="font-display text-[28px] leading-tight font-normal">{family.data.name}</h3>
+      <p class="mt-1 mb-4.5 font-accent text-[17px] text-ink-dim italic">{family.data.line}</p>
+      <ul class="border-t border-hair">
+        {members.map((member) => (
+          <li class="border-b border-hair">
+            {member.id === project.id ? (
+              <div class="flex items-baseline justify-between gap-4 py-3" aria-current="page">
+                <span class="font-display text-[19px]">{member.data.name}</span>
+                <span class="text-[10px] tracking-[0.2em] text-brass uppercase">This project</span>
+              </div>
+            ) : (
+              <a
+                href={projectPath(member)}
+                class="flex items-baseline justify-between gap-4 py-3 no-underline"
+              >
+                <span class="font-display text-[19px] text-ink-dim transition-colors hover:text-ink">
+                  {member.data.name}
+                </span>
+                <span class="text-[10px] tracking-[0.2em] text-ink-faint uppercase">
+                  {yearOf(member.data.started)}
+                </span>
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  </article>
+</BaseLayout>

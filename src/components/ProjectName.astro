@@ -1,0 +1,17 @@
+---
+// The name in two halves with the mercury dot between them. The wrapper is a
+// flex row, so no whitespace can ever fall between the halves and the dot.
+import { splitName, type Project } from '../lib/projects';
+
+export interface Props {
+  project: Project;
+}
+
+const [first, second] = splitName(Astro.props.project);
+---
+
+<span class="inline-flex items-baseline" aria-label={Astro.props.project.data.name}>
+  <span aria-hidden="true">{first}</span>
+  <i class="mercury-dot -translate-y-[0.12em]" aria-hidden="true"></i>
+  <span aria-hidden="true">{second}</span>
+</span>

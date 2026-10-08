@@ -1,0 +1,102 @@
+@import 'tailwindcss';
+
+/* The night atelier: one dark ground, warm ivory ink in three strengths,
+   brass for what is current, silver for the mercury. */
+@theme {
+  --color-night: #060607;
+  --color-panel: rgb(9 9 10 / 0.78);
+  --color-ink: #efeae2;
+  --color-ink-dim: rgb(239 234 226 / 0.58);
+  --color-ink-faint: rgb(239 234 226 / 0.32);
+  --color-hair: rgb(239 234 226 / 0.14);
+  --color-brass: #d6b36f;
+  --color-silver: #d9dde2;
+
+  --ease-glide: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Families registered through the Fonts API in astro.config.ts. */
+@theme inline {
+  --font-display: var(--font-bodoni);
+  --font-accent: var(--font-cormorant);
+  --font-sans: var(--font-manrope);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    background-color: var(--color-night);
+    color: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply min-h-dvh font-sans antialiased;
+  }
+
+  ::selection {
+    background-color: rgb(214 179 111 / 0.35);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--color-brass);
+    outline-offset: 3px;
+  }
+}
+
+@utility font-display-opsz {
+  font-variation-settings: 'opsz' 96;
+}
+
+/* A section heading: small capitals on a hairline. */
+@utility section-label {
+  @apply mb-3.5 flex items-center gap-3 text-[10.5px] font-medium tracking-[0.28em] text-ink-faint uppercase;
+  &::after {
+    content: '';
+    @apply h-px flex-1 bg-hair;
+  }
+}
+
+@layer components {
+  /* The bead of mercury seated between the two halves of a project's name. */
+  .mercury-dot {
+    display: inline-block;
+    width: 0.16em;
+    height: 0.16em;
+    margin: 0 0.06em;
+    flex: none;
+    border-radius: 50%;
+    vertical-align: 0.12em;
+    background: radial-gradient(circle at 35% 30%, #fff 0, #cfd3d8 30%, #5d6168 70%, #2a2c30 100%);
+    box-shadow: 0 0 12px rgb(255 255 255 / 0.3);
+  }
+
+  /* A project's narrative, as written in Markdown. */
+  .narrative h2 {
+    @apply mt-13 section-label;
+  }
+  .narrative p {
+    @apply mb-3 max-w-[62ch] text-[15px] leading-[1.7] text-ink/85;
+  }
+  .narrative a {
+    @apply underline decoration-hair underline-offset-4 transition-colors hover:decoration-brass;
+  }
+  .narrative ol {
+    @apply grid list-none gap-5.5 p-0;
+    counter-reset: challenge;
+  }
+  .narrative ol > li {
+    @apply relative pl-14 text-[14.5px] leading-[1.65] text-ink/78;
+    counter-increment: challenge;
+  }
+  .narrative ol > li::before {
+    content: counter(challenge, upper-roman);
+    @apply absolute top-0 left-0 font-display text-[28px] leading-none text-silver;
+  }
+  .narrative ol > li strong {
+    @apply mb-1 block font-display text-[21px] leading-tight font-normal text-ink;
+  }
+}

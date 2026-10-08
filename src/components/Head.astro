@@ -1,0 +1,59 @@
+---
+import { Font } from 'astro:assets';
+import { SITE } from '../config/site';
+import Analytics from './Analytics.astro';
+
+export interface Props {
+  /** The page's own title; the site name is added after it. Omit on the home. */
+  title?: string;
+  description?: string;
+  /** Path or absolute URL of the link-preview image. */
+  image?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = SITE.description,
+  image = SITE.ogImage,
+  noindex = false,
+} = Astro.props;
+
+const fullTitle = title ? `${title} · ${SITE.name}` : `${SITE.name} · ${SITE.line}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const imageURL = new URL(image, Astro.site);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex" />}
+<meta name="author" content={SITE.author} />
+<meta name="theme-color" content={SITE.themeColor} />
+<meta name="color-scheme" content="dark" />
+<meta name="google-site-verification" content={SITE.googleSiteVerification} />
+
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:title" content={title ?? SITE.name} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageURL} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<Font cssVariable="--font-bodoni" preload={[{ subset: 'latin', style: 'normal' }]} />
+<Font cssVariable="--font-cormorant" preload={[{ subset: 'latin', weight: '300' }]} />
+<Font cssVariable="--font-manrope" preload={[{ subset: 'latin' }]} />
+
+<Analytics />

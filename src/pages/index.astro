@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectName from '../components/ProjectName.astro';
+import { SITE } from '../config/site';
+import { yearOf } from '../lib/dates';
+import { kicker, projectPath, projectsForHome } from '../lib/projects';
+
+const projects = await projectsForHome();
+const families = new Map((await getCollection('families')).map((f) => [f.id, f.data.name]));
+---
+
+<BaseLayout>
+  <section class="mx-auto max-w-5xl px-4 pt-20 pb-10 sm:px-8 sm:pt-28">
+    <h1 class="max-w-[16ch] font-display text-[clamp(40px,6vw,80px)] leading-[0.98] font-normal tracking-[-0.01em] font-display-opsz">
+      {SITE.line}
+    </h1>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 sm:px-8" aria-labelledby="projects">
+    <h2 id="projects" class="section-label">
+      Projects
+    </h2>
+    <ul class="border-t border-hair">
+      {projects.map((project) => (
+        <li class="border-b border-hair">
+          <a
+            href={projectPath(project)}
+            class="group grid gap-1 py-5 no-underline sm:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] sm:gap-8"
+          >
+            <span class="font-display text-[26px] leading-tight transition-colors group-hover:text-white">
+              <ProjectName project={project} />
+            </span>
+            <span>
+              <span class="block text-[10.5px] tracking-[0.24em] text-brass uppercase">
+                {kicker(
+                  project,
+                  families.get(project.data.family) ?? '',
+                  yearOf(project.data.started),
+                )}
+              </span>
+              <span class="mt-1 block text-[14px] leading-relaxed text-ink-dim">
+                {project.data.line}
+              </span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+// Google Analytics 4, loaded on every page from the single ID in config/analytics.ts.
+// Production builds only, so local development never sends a hit.
+import { GA_MEASUREMENT_ID } from '../config/analytics';
+
+const enabled = import.meta.env.PROD && GA_MEASUREMENT_ID;
+const src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+---
+
+{enabled && (
+  <>
+    <script is:inline async src={src} />
+    <script is:inline define:vars={{ id: GA_MEASUREMENT_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+      window.gtag('js', new Date());
+      window.gtag('config', id);
+    </script>
+  </>
+)}

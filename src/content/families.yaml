@@ -1,0 +1,19 @@
+# Each family's line is written to hold however many projects it gathers.
+- id: encyclopedias
+  name: Encyclopedias
+  line: Whole worlds set down page by page, every figure sourced or worked out, never guessed.
+- id: learning
+  name: Learning
+  line: Ways into a language, a code, a history and a feel for the world, made to be learned by doing.
+- id: tools
+  name: Tools
+  line: Everyday instruments, rebuilt the way I always wanted them to work.
+- id: tributes
+  name: Screen tributes
+  line: Working tools dressed as the screens of favourite series and films.
+- id: film
+  name: Film
+  line: A life at the cinema, scored ten ways and kept for good.
+- id: personal
+  name: Personal
+  line: 'My work as a scientist: the research, the writing and the portfolio.'

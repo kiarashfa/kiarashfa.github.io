@@ -1,0 +1,19 @@
+---
+import Coffee from '../assets/icons/coffee.svg';
+import Github from '../assets/icons/github.svg';
+import Globe from '../assets/icons/globe.svg';
+import Mail from '../assets/icons/mail.svg';
+import Paypal from '../assets/icons/paypal.svg';
+
+const ICONS = { coffee: Coffee, github: Github, globe: Globe, mail: Mail, paypal: Paypal };
+
+export interface Props {
+  name: keyof typeof ICONS;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+const Svg = ICONS[name];
+---
+
+<Svg class={className} width="1em" height="1em" aria-hidden="true" focusable="false" />
