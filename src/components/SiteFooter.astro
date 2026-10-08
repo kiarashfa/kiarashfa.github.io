@@ -6,16 +6,16 @@ import Icon from './Icon.astro';
 const contact = await getCollection('links', (l) => l.data.group === 'contact');
 ---
 
-<footer class="mx-auto mt-24 flex max-w-5xl flex-wrap items-center justify-between gap-4 border-t border-hair px-4 py-8 text-[12.5px] text-ink-faint sm:px-8">
+<footer class="site-footer">
   <p>
     © {new Date().getFullYear()} {SITE.author}
   </p>
-  <ul class="flex items-center gap-5" aria-label="Contact">
+  <ul aria-label="Contact">
     {contact.map(({ data }) => (
       <li>
-        <a href={data.href} class="flex items-center gap-2 transition-colors hover:text-ink">
+        <a href={data.href}>
           <Icon name={data.icon} class="size-4" />
-          <span class="sr-only sm:not-sr-only">{data.label}</span>
+          <span>{data.label}</span>
         </a>
       </li>
     ))}

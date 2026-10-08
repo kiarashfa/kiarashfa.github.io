@@ -1,0 +1,390 @@
+/* The stage layout: when the WebGL stage runs (html.gl), the home becomes
+   Converge and a project's page slides in beside its emblem. Without it the
+   pages keep their plain layout (pages.css). */
+@layer components {
+  .stage-root {
+    display: none;
+  }
+
+  /* ---------- the loading screen ---------- */
+  .veil {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(60% 45% at 50% 46%, #121215 0, #060607 72%);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 1s var(--ease-glide),
+      visibility 1s;
+  }
+  html.gl-boot .veil,
+  html.gl .veil:not(.is-done) {
+    opacity: 1;
+    visibility: visible;
+  }
+  .veil-in {
+    display: grid;
+    justify-items: center;
+    padding: 0 16px;
+    text-align: center;
+    transition: transform 1s var(--ease-glide);
+  }
+  .veil.is-done .veil-in {
+    transform: translateY(-3vh) scale(0.98);
+  }
+  .veil-mark {
+    width: min(78vw, 420px);
+    height: auto;
+    overflow: visible;
+  }
+  .veil-wordmark {
+    margin-top: 18px;
+    font-size: clamp(30px, 4vw, 40px);
+  }
+  .veil-line {
+    min-height: 1.3em;
+    margin: 8px 0 0;
+    font-family: var(--font-accent);
+    font-size: 19px;
+    font-style: italic;
+    color: var(--color-ink-dim);
+  }
+  .veil-rule {
+    width: 44px;
+    height: 1px;
+    margin: 26px auto 14px;
+    background: var(--color-hair);
+  }
+  .veil-tier {
+    margin: 0;
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+  .veil-tier b {
+    font-weight: 500;
+    color: var(--color-ink-dim);
+  }
+
+  /* ---------- the stage itself ---------- */
+  html.gl .stage-root {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    transition:
+      opacity 0.8s var(--ease-glide),
+      visibility 0.8s;
+  }
+  html.gl[data-view='page'] .stage-root {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .stage-canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+  }
+  .stage-scrim {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgb(0 0 0 / 0.42) 0,
+      transparent 22%,
+      transparent 62%,
+      rgb(0 0 0 / 0.62) 100%
+    );
+  }
+
+  html.gl:is([data-view='home'], [data-view='project']),
+  html.gl:is([data-view='home'], [data-view='project']) body {
+    height: 100%;
+    overflow: hidden;
+  }
+  html.gl:is([data-view='home'], [data-view='project']) .site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    pointer-events: none;
+  }
+  html.gl:is([data-view='home'], [data-view='project']) .site-header > * {
+    pointer-events: auto;
+  }
+  html.gl .quality {
+    display: inline-flex;
+  }
+  html.gl[data-view='home'] .site-footer {
+    display: none;
+  }
+
+  /* ---------- Converge: the home ---------- */
+  html.gl[data-view='home'] .home-hero {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  html.gl[data-view='home'] .converge {
+    display: block;
+  }
+  .converge .word {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    font-family: var(--font-accent);
+    font-size: clamp(26px, 2.6vw, 40px);
+    font-style: italic;
+    font-weight: 300;
+    white-space: nowrap;
+    text-shadow: 0 2px 18px rgb(0 0 0 / 0.35);
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+  .converge-mark {
+    position: fixed;
+    bottom: clamp(96px, 15vh, 150px);
+    left: 50%;
+    z-index: 2;
+    width: min(900px, calc(100vw - 32px));
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  .converge-mark .roots {
+    margin: 0 0 10px;
+  }
+  .converge-name {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(46px, 7vw, 112px);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    font-variation-settings: 'opsz' 96;
+  }
+  .converge-name span {
+    display: inline-block;
+  }
+  .converge-name .mercury-dot {
+    transform: translateY(-0.12em);
+  }
+  .converge-foot {
+    position: fixed;
+    right: clamp(16px, 3vw, 44px);
+    bottom: calc(clamp(20px, 4vh, 40px) + env(safe-area-inset-bottom, 0px));
+    left: clamp(16px, 3vw, 44px);
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-hair);
+  }
+  .converge-line {
+    max-width: 52ch;
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--color-ink-dim);
+  }
+  .converge-line b {
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .converge-line b::after {
+    content: '.';
+    margin-right: 0.35em;
+  }
+  .converge-made {
+    min-height: 1.3em;
+    margin: 0;
+    font-family: var(--font-accent);
+    font-size: 19px;
+    font-style: italic;
+  }
+  .converge-cta {
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--color-brass);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  /* the list of projects becomes the rail of names */
+  html.gl[data-view='home'] .home-index {
+    position: fixed;
+    top: 50%;
+    right: clamp(16px, 3vw, 44px);
+    z-index: 2;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    transform: translateY(-50%);
+  }
+  html.gl[data-view='home'] .home-index > h2,
+  html.gl[data-view='home'] .home-index .about,
+  html.gl[data-view='home'] .home-index .mercury-dot {
+    display: none;
+  }
+  html.gl[data-view='home'] .home-index ol {
+    display: grid;
+    gap: 6px;
+    border: 0;
+  }
+  html.gl[data-view='home'] .home-index li {
+    border: 0;
+  }
+  html.gl[data-view='home'] .home-index a {
+    display: block;
+    padding: 0;
+  }
+  html.gl[data-view='home'] .home-index .n {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    color: var(--color-ink-dim);
+    opacity: 0.7;
+    /* legible where the rail crosses a bright softbox */
+    text-shadow:
+      0 0 10px rgb(0 0 0 / 0.95),
+      0 0 3px rgb(0 0 0 / 0.9);
+    transition:
+      color 0.3s,
+      opacity 0.3s;
+  }
+  html.gl[data-view='home'] .home-index a:hover .n,
+  html.gl[data-view='home'] .home-index a[aria-current] .n {
+    color: var(--color-ink);
+    opacity: 1;
+  }
+  html.gl[data-view='home'] .home-index a[aria-current] .n::after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff, #9aa0a8 45%, #3a3d42);
+  }
+
+  /* ---------- Arrival: a project's page ---------- */
+  html.gl[data-view='project'] .back {
+    position: fixed;
+    top: calc(74px + env(safe-area-inset-top, 0px));
+    left: clamp(16px, 3vw, 44px);
+    z-index: 6;
+    margin: 0;
+    animation: fade-in 0.6s 0.3s both;
+  }
+  html.gl[data-view='project'] .panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    width: min(660px, 50vw);
+    max-width: none;
+    margin: 0;
+    padding: 132px clamp(24px, 4vw, 64px) 0 clamp(28px, 3vw, 52px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    background: linear-gradient(
+      90deg,
+      rgb(6 6 7 / 0) 0,
+      rgb(6 6 7 / 0.84) 14%,
+      rgb(6 6 7 / 0.96) 60%
+    );
+    /* text scrolling up fades out before it reaches the header */
+    mask: linear-gradient(transparent 0, #000 104px);
+    animation: panel-in 1.1s var(--ease-glide) both;
+  }
+  html.gl[data-view='project'] .panel > * {
+    animation: rise-in 1s var(--ease-glide) both;
+  }
+  html.gl[data-view='project'] .panel > :nth-child(2) {
+    animation-delay: 0.12s;
+  }
+  html.gl[data-view='project'] .panel > :nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  html.gl[data-view='project'] .panel > :nth-child(n + 4) {
+    animation-delay: 0.28s;
+  }
+  html.gl[data-view='project'] .panel .site-footer {
+    margin-top: 72px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  @media (max-width: 760px) {
+    html.gl[data-view='home'] .home-index {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+    .converge-foot {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .converge-line {
+      font-size: 12.5px;
+    }
+    /* the foot runs to three lines on a phone: the name sits above it */
+    .converge-mark {
+      bottom: calc(clamp(200px, 27vh, 250px) + env(safe-area-inset-bottom, 0px));
+    }
+    html.gl[data-view='project'] .panel {
+      top: 50vh;
+      left: 0;
+      width: auto;
+      padding: 30px 18px 0;
+      background: linear-gradient(180deg, rgb(6 6 7 / 0) 0, rgb(6 6 7 / 0.9) 40px, #060607 160px);
+      mask: linear-gradient(transparent 0, #000 28px);
+      animation-name: sheet-in;
+    }
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(6%);
+  }
+}
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(8%);
+  }
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}

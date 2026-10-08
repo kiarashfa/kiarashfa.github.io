@@ -1,0 +1,69 @@
+---
+// "In the family": the project's family, its line, and every member with a
+// still portrait of its emblem (mercury for siblings, colour for this one).
+// The portraits are photographed by the stage once it runs.
+import { yearOf } from '../lib/dates';
+import { familyWithMembers, projectPath, type Project } from '../lib/projects';
+
+export interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const { family, members } = await familyWithMembers(project);
+const blank = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+---
+
+<section class="sec family" aria-labelledby="family">
+  <h2 id="family">In the family</h2>
+  <h3 class="family-name">{family.data.name}</h3>
+  <p class="sub">{family.data.line}</p>
+  {members.length > 1 ? (
+    <ul class="family-list">
+      {members.map((m) => {
+        const me = m.id === project.id;
+        const body = (
+          <>
+            <span class="pic">
+              <img
+                src={blank}
+                data-portrait={m.id}
+                data-colour={me ? '' : undefined}
+                alt=""
+                width="56"
+                height="56"
+              />
+            </span>
+            <span class="who">
+              <span class="n">{m.data.name}</span>
+              <span class="l">{m.data.line}</span>
+            </span>
+            <span class="y">
+              {me ? (
+                'This project'
+              ) : (
+                <>
+                  {yearOf(m.data.started)}
+                  <i>Open →</i>
+                </>
+              )}
+            </span>
+          </>
+        );
+        return (
+          <li>
+            {me ? (
+              <div class="me" aria-current="page">
+                {body}
+              </div>
+            ) : (
+              <a href={projectPath(m)}>{body}</a>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  ) : (
+    <p class="alone">The only one in its family, for now.</p>
+  )}
+</section>

@@ -1,0 +1,22 @@
+---
+// The persistent stage: the WebGL canvas, its loading screen and the data it
+// needs. It is part of every page and kept across page changes, so the picture
+// can glide from the home into a project and back.
+import { stageProjects } from '../lib/projects';
+import Veil from './Veil.astro';
+
+const data = JSON.stringify(await stageProjects());
+---
+
+<div class="stage-root" transition:persist="stage" aria-hidden="true">
+  <canvas id="stage" class="stage-canvas"></canvas>
+  <div class="stage-scrim"></div>
+  <script type="application/json" id="stage-data" set:html={data} />
+</div>
+<div transition:persist="veil">
+  <Veil />
+</div>
+
+<script>
+  import '../scripts/stage';
+</script>

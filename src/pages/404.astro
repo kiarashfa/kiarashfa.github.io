@@ -1,24 +1,46 @@
 ---
 // GitHub Pages serves /404.html for any address it cannot resolve on this
 // domain, so the page must be complete in its own HTML and link from the root.
+// The timeline wheel turns as a ring here, with an empty stop in its lens,
+// placed in the longest quiet stretch between two projects.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TimelineWheel, { type WheelRow } from '../components/TimelineWheel.svelte';
+import { timeline } from '../lib/projects';
+
+const time = await timeline();
+// the row that follows the longest gap (or the end, when there is none)
+let quiet = time.length;
+for (let i = 0, longest = 0; i < time.length; i++)
+  if (time[i]!.gap > longest) [quiet, longest] = [i, time[i]!.gap];
+
+const rows: WheelRow[] = time.map((r) => ({ ...r, key: r.slug, gap: 0 }));
+rows.splice(quiet, 0, {
+  key: 'empty',
+  name: 'Not found',
+  family: 'This address',
+  month: '— —',
+  year: '404',
+  empty: true,
+});
 ---
 
 <BaseLayout title="Not found" description="There is no page at this address." noindex>
-  <section class="mx-auto grid max-w-2xl justify-items-center px-4 pt-24 text-center sm:pt-32">
-    <p class="text-[13px] tracking-[0.34em] text-ink-faint tabular-nums">404</p>
-    <h1 class="mt-4 font-display text-5xl font-normal sm:text-6xl">Not found</h1>
-    <p class="mt-4 text-lg text-ink-dim">There is no page at this address.</p>
-    <nav
-      class="mt-10 flex w-full flex-wrap justify-center gap-x-7 gap-y-2.5 border-t border-hair pt-8"
-      aria-label="Ways out"
-    >
-      <a href="/" class="font-display text-lg">
-        Home
-      </a>
-      <a href="/me/" class="font-display text-lg">
-        About
-      </a>
-    </nav>
-  </section>
+  <div class="page not-found">
+    <div class="not-found-text">
+      <p class="kick">404 · Not found</p>
+      <h1>Not in the timeline</h1>
+      <p class="quip">Nothing began at this address. Turn the wheel to something that did.</p>
+      <nav class="ways" aria-label="Ways out">
+        <a href="/">Home</a>
+        <a href="/me/">About me</a>
+      </nav>
+    </div>
+    <TimelineWheel
+      client:load
+      rows={rows}
+      start={quiet}
+      loop
+      label="Every project, in the order it began"
+    />
+  </div>
 </BaseLayout>

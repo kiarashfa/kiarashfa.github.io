@@ -1,15 +1,6 @@
-import { defineCollection } from 'astro:content';
+import { defineCollection, reference } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
-
-export const FAMILY_IDS = [
-  'encyclopedias',
-  'learning',
-  'tools',
-  'tributes',
-  'film',
-  'personal',
-] as const;
 
 const yearMonth = z.string().regex(/^\d{4}-\d{2}$/, 'YYYY-MM');
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD');
@@ -18,6 +9,9 @@ const milestone = z.string().regex(/^\d{4}(-\d{2}){0,2}\s+\S/, 'a date, then wha
 // One Markdown file per project; the file name is the slug and the page's
 // address (/p/<slug>/). The body holds the sections The idea, The story,
 // The challenges, What makes it special, Built with, and optionally Figures.
+// Adding a project is two files: src/content/projects/<slug>.md and its
+// emblem, src/emblems/<slug>.ts (until that exists it stands as a plain drop).
+// Every list, the timeline and the home pick it up from there.
 const projects = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/projects' }),
   schema: z.object({
@@ -29,7 +23,8 @@ const projects = defineCollection({
     roots: z.tuple([z.string(), z.string()]),
     // Where the name is split to seat the mercury dot between its two halves.
     split: z.number().int().positive(),
-    family: z.enum(FAMILY_IDS),
+    // An id from src/content/families.yaml.
+    family: reference('families'),
     flagship: z.boolean(),
     // The colour the emblem blooms into on the project's own page.
     color: z.string().regex(/^#[0-9a-f]{6}$/i),
@@ -52,7 +47,7 @@ const projects = defineCollection({
 const families = defineCollection({
   loader: file('./src/content/families.yaml'),
   schema: z.object({
-    id: z.enum(FAMILY_IDS),
+    id: z.string().regex(/^[a-z0-9-]+$/),
     name: z.string(),
     line: z.string(),
   }),

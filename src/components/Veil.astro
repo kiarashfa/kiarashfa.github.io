@@ -1,0 +1,116 @@
+---
+// The loading screen, shown while the stage starts: two mercury drops that
+// close the gap as the work is done and fuse into one at "Ready".
+// It only appears when the stage is starting (html.gl-boot).
+import Wordmark from './Wordmark.astro';
+---
+
+<div id="veil" class="veil" role="status" aria-live="polite">
+  <div class="veil-in">
+    <svg class="veil-mark" viewBox="0 0 420 210" aria-hidden="true">
+      <defs>
+        <filter id="veil-goo" x="-20%" y="-40%" width="140%" height="180%">
+          <feGaussianBlur stdDeviation="9"></feGaussianBlur>
+          <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -12"></feColorMatrix>
+        </filter>
+        <filter id="veil-soft" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3.2"></feGaussianBlur>
+        </filter>
+        <mask id="veil-drops">
+          <g filter="url(#veil-goo)" fill="#fff">
+            <circle data-drop="a" cx="86" cy="104" r="44"></circle>
+            <circle data-drop="b" cx="334" cy="104" r="44"></circle>
+          </g>
+        </mask>
+        <mask id="veil-twin">
+          <g filter="url(#veil-goo)" fill="#fff">
+            <circle data-drop="a" cx="86" cy="104" r="44"></circle>
+            <circle data-drop="b" cx="334" cy="104" r="44"></circle>
+          </g>
+        </mask>
+        <radialGradient id="veil-shade" cx=".36" cy=".3" r=".75">
+          <stop offset="0" stop-color="#ffffff"></stop>
+          <stop offset=".12" stop-color="#eef1f4"></stop>
+          <stop offset=".38" stop-color="#a7adb5"></stop>
+          <stop offset=".7" stop-color="#43474e"></stop>
+          <stop offset="1" stop-color="#121316"></stop>
+        </radialGradient>
+        <linearGradient id="veil-fade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff" stop-opacity=".22"></stop>
+          <stop offset=".6" stop-color="#fff" stop-opacity="0"></stop>
+        </linearGradient>
+        <mask id="veil-floor">
+          <rect x="0" y="150" width="420" height="80" fill="url(#veil-fade)"></rect>
+        </mask>
+      </defs>
+      <g mask="url(#veil-drops)">
+        <rect width="420" height="210" fill="#15161a"></rect>
+        <g style="isolation:isolate">
+          <circle data-shade="a" cx="80" cy="96" r="62" fill="url(#veil-shade)"></circle>
+          <circle
+            data-shade="b"
+            cx="328"
+            cy="96"
+            r="62"
+            fill="url(#veil-shade)"
+            style="mix-blend-mode:lighten"
+          ></circle>
+        </g>
+        <g filter="url(#veil-soft)">
+          <ellipse
+            data-glint="a"
+            cx="76"
+            cy="77"
+            rx="22"
+            ry="6"
+            fill="#fff"
+            opacity=".85"
+          ></ellipse>
+          <ellipse
+            data-glint="b"
+            cx="324"
+            cy="77"
+            rx="22"
+            ry="6"
+            fill="#fff"
+            opacity=".85"
+          ></ellipse>
+          <ellipse
+            data-rim="a"
+            cx="86"
+            cy="137"
+            rx="34"
+            ry="9"
+            fill="#cfe0ff"
+            opacity=".22"
+          ></ellipse>
+          <ellipse
+            data-rim="b"
+            cx="334"
+            cy="137"
+            rx="34"
+            ry="9"
+            fill="#cfe0ff"
+            opacity=".22"
+          ></ellipse>
+        </g>
+      </g>
+      <g mask="url(#veil-floor)">
+        <g transform="translate(0 300) scale(1 -1)">
+          <g mask="url(#veil-twin)">
+            <rect width="420" height="210" fill="#2a2c31"></rect>
+          </g>
+        </g>
+      </g>
+      <line x1="60" x2="360" y1="150" y2="150" stroke="rgba(239,234,226,.08)"></line>
+    </svg>
+    <Wordmark class="veil-wordmark" />
+    <p class="veil-line" data-veil-line>
+      Warming the mercury
+    </p>
+    <i class="veil-rule" aria-hidden="true"></i>
+    <p class="veil-tier">
+      <b data-veil-tier>&nbsp;</b> <span data-veil-why></span>
+    </p>
+  </div>
+</div>

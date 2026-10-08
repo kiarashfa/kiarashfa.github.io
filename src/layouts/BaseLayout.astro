@@ -1,23 +1,48 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { SITE } from '../config/site';
 import Head, { type Props as HeadProps } from '../components/Head.astro';
-import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Stage from '../components/Stage.astro';
 
-export type Props = HeadProps;
+export interface Props extends HeadProps {
+  /** What the stage does here: the home sequence, a project's page, or nothing. */
+  view?: 'home' | 'project' | 'page';
+  /** The project in view, on a project page. */
+  slug?: string;
+  /** Pages that place the footer themselves set this to false. */
+  footer?: boolean;
+}
+
+const { view = 'page', slug, footer = true, ...head } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={SITE.locale}>
+<html lang={SITE.locale} data-view={view} data-slug={slug} transition:animate="none">
   <head>
-    <Head {...Astro.props} />
+    <script is:inline>
+      // before the first paint: mark that scripts run, and that the stage is about to start
+      (function (d) {
+        d.classList.add('js');
+        var v = d.dataset.view;
+        if ((v === 'home' || v === 'project') && window.WebGL2RenderingContext)
+          d.classList.add('gl-boot');
+      })(document.documentElement);
+    </script>
+    <Head {...head} />
+    <ClientRouter />
   </head>
-  <body class="flex min-h-dvh flex-col">
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <Stage />
     <SiteHeader />
-    <main id="main" class="flex-1">
+    <main id="main">
       <slot />
     </main>
-    <SiteFooter />
+    {footer && <SiteFooter />}
   </body>
 </html>

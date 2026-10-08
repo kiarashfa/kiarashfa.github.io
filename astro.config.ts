@@ -56,5 +56,7 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    // three.js and the stage form one chunk, fetched only by pages with the stage
+    build: { chunkSizeWarningLimit: 800 },
   },
 });

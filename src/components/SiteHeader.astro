@@ -1,14 +1,14 @@
 ---
+import QualitySwitch from './QualitySwitch.svelte';
 import Wordmark from './Wordmark.astro';
 ---
 
-<header class="flex items-baseline justify-between px-4 pt-[calc(24px+env(safe-area-inset-top,0px))] text-[12.5px] tracking-[0.04em] sm:px-[clamp(16px,3vw,44px)]">
-  <a href="/" class="text-[22px] no-underline" aria-label="KiarashFa, home">
+<header class="site-header">
+  <a href="/" class="site-header-mark" aria-label="KiarashFa, home">
     <Wordmark />
   </a>
-  <nav aria-label="Main" class="flex items-baseline gap-6 text-ink-dim">
-    <a href="/me/" class="no-underline transition-colors hover:text-ink">
-      About
-    </a>
+  <nav aria-label="Main" class="site-header-nav">
+    <a href="/me/">About</a>
+    <QualitySwitch client:load />
   </nav>
 </header>

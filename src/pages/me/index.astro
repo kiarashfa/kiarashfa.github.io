@@ -6,31 +6,44 @@ import { SITE } from '../../config/site';
 
 const links = await getCollection('links');
 const groups = [
-  { id: 'contact', title: 'Contact' },
-  { id: 'support', title: 'Support' },
+  { id: 'contact', title: 'Say hello' },
+  { id: 'support', title: 'Support what I make' },
 ] as const;
 ---
 
-<BaseLayout title="About" description={`About ${SITE.author}, and how to reach me.`}>
-  <section class="mx-auto max-w-3xl px-4 pt-16 sm:px-8 sm:pt-24">
-    <h1 class="font-display text-[clamp(40px,5vw,72px)] leading-[0.98] font-normal tracking-[-0.01em] font-display-opsz">
-      {SITE.author}
-    </h1>
+<BaseLayout title="About" description={`About me, ${SITE.author}, and the things I make.`}>
+  <article class="page about">
+    <p class="kick">About</p>
+    <h1>Hello, I’m Kia.</h1>
+    <div class="prose">
+      <p>
+        Kiarash Farajzadehahary on paper, Kia to almost everyone. This is where I keep everything I
+        make: encyclopedias, tools, places to learn, and tributes to the screens I love.
+      </p>
+      <p>
+        Most of them began the same way, with something I wanted that did not exist yet, or that
+        existed and kept slipping away: a ledger for every film I watch, a Spanish course that could
+        not be deleted, a calculator that no new phone would leave behind. So I built them, and each
+        one took me into a field I had never worked in before. That is half the pleasure.
+      </p>
+      <p>
+        Everything here is free, made in my own time, and its source is open to read on GitHub. If
+        one of them is useful to you, or simply makes you smile, it has done its job.
+      </p>
+      <p>
+        My professional work and my résumé live on my <a href={SITE.personalSite}>personal site</a>.
+      </p>
+    </div>
 
     {groups.map((group) => (
-      <section class="mt-13" aria-labelledby={group.id}>
-        <h2 id={group.id} class="section-label">
-          {group.title}
-        </h2>
-        <ul class="grid gap-3">
+      <section class="sec" aria-labelledby={group.id}>
+        <h2 id={group.id}>{group.title}</h2>
+        <ul class="links">
           {links
             .filter((l) => l.data.group === group.id)
             .map(({ data }) => (
               <li>
-                <a
-                  href={data.href}
-                  class="inline-flex items-center gap-3 text-[15px] text-ink-dim no-underline transition-colors hover:text-ink"
-                >
+                <a href={data.href}>
                   <Icon name={data.icon} class="size-4.5" />
                   {data.label}
                 </a>
@@ -39,5 +52,5 @@ const groups = [
         </ul>
       </section>
     ))}
-  </section>
+  </article>
 </BaseLayout>

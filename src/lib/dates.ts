@@ -1,4 +1,4 @@
-const MONTHS = [
+export const MONTHS = [
   'January',
   'February',
   'March',
@@ -16,7 +16,7 @@ const MONTHS = [
 /** "2026-08" → "August 2026". */
 export function monthYear(yearMonth: string): string {
   const [year, month] = yearMonth.split('-').map(Number);
-  return `${MONTHS[month - 1]} ${year}`;
+  return `${MONTHS[month! - 1]} ${year}`;
 }
 
 /** "2026-08" → "2026". */
