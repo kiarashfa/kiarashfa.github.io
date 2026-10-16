@@ -12,4 +12,5 @@ export const SITE = {
   ogImage: '/og-image.png',
   themeColor: '#060607',
   googleSiteVerification: 'Y_9lvEQmchA3CfOyw3U0Tn5LhKnWTr-oN89j-fhsey4',
+  bingSiteVerification: '91424F304D57CE2117A712FAF537C979',
 } as const;
