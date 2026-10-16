@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kiarashfa.github.io/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/ARMAG/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/audioptix/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/Cinemarium/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/constyx/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/DrXRates/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/eXir/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/Galerium/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/Kalculator/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/LaLista/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/LOSTimer/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/Markey/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/morcypher/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/perceptense/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/PolymerAtlas/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/pseudoku/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/website/sitemap-index.xml
+Sitemap: https://kiarashfa.github.io/Xefy/sitemap-index.xml
